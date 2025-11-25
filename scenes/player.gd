@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
+signal toggle_inventory
+
+#region player control var
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 enum Tools {none, hoe, axe, watering_can}
@@ -15,6 +18,10 @@ enum State {idle, walk, work}
 
 var direction = dir.down
 var state = State.idle
+#endregion
+#region inventory var
+@export var inventory_data: InventoryData
+#endregion
 
 func get_input() -> void:
 	var input_direction = Input.get_vector('left','right','up','down')
@@ -30,6 +37,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	handle_animation()
 	handle_running()
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
 
 func handle_movement() -> void:
 	if can_walk():
@@ -38,6 +47,7 @@ func handle_movement() -> void:
 		else:
 			state = State.walk
 
+#region animation
 func handle_animation() -> void:
 #region movement animation
 	##movement animation
@@ -133,8 +143,9 @@ func handle_animation() -> void:
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 #endregion
+#endregion
 
-
+#region state machine
 func can_walk() -> bool:
 	return state == State.idle or state == State.walk
 
@@ -152,3 +163,4 @@ func handle_running() -> void:
 			accel= speed
 	else:
 		accel = speed
+#endregion

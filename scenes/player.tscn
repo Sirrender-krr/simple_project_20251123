@@ -1,7 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://cpolyfl1al6pr"]
+[gd_scene load_steps=47 format=3 uid="uid://cpolyfl1al6pr"]
 
 [ext_resource type="Texture2D" uid="uid://d4npxjo7wgg1w" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Characters/Basic Charakter Spritesheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://jp5ok6nogo0" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Resource" uid="uid://c4ksr8qy56l6q" path="res://inventory/player_inventory.tres" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dwd4xky8el72h" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Characters/Basic Charakter Actions.png" id="2_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
@@ -390,12 +391,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4r5pv"]
 size = Vector2(6, 6)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_g2els")
 tools = 1
+inventory_data = ExtResource("2_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fulsm")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://0eu23vvbl3gr"]
+[gd_scene load_steps=14 format=4 uid="uid://0eu23vvbl3gr"]
 
+[ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_sextl"]
 [ext_resource type="Texture2D" uid="uid://b2rnb6sntcvbl" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Grass.png" id="1_umdci"]
 [ext_resource type="Texture2D" uid="uid://q11hebf3qrqe" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Hills.png" id="2_sextl"]
 [ext_resource type="Texture2D" uid="uid://drmsmrn3k7u12" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Tilled_Dirt_Wide_v2.png" id="3_tqlsa"]
 [ext_resource type="PackedScene" uid="uid://cpolyfl1al6pr" path="res://scenes/player.tscn" id="5_4yngn"]
 [ext_resource type="PackedScene" uid="uid://d4d7f4fooftrl" path="res://inventory/inventory.tscn" id="5_umdci"]
+[ext_resource type="Script" uid="uid://cvcrfk3tq2216" path="res://scripts/inventory_interface.gd" id="6_tqlsa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wac34"]
 texture = ExtResource("1_umdci")
@@ -868,6 +870,7 @@ sources/1 = SubResource("TileSetAtlasSource_i6bp4")
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_sextl")
 
 [node name="tile_map" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -881,18 +884,22 @@ tile_set = SubResource("TileSet_bfp05")
 tile_map_data = PackedByteArray("AAAJAAcAAQAAAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQACAAAAAAANAAgAAQACAAEAAAANAAkAAQACAAEAAAANAAoAAQACAAIAAAAMAAoAAQABAAIAAAALAAoAAQABAAIAAAAKAAoAAQABAAIAAAAJAAoAAQAAAAIAAAAJAAkAAQAAAAEAAAAJAAgAAQAAAAEAAAAKAAgAAQABAAEAAAALAAgAAQABAAEAAAAMAAgAAQABAAEAAAAMAAkAAQABAAEAAAALAAkAAQABAAEAAAAKAAkAAQABAAEAAAAPAAcAAQAAAAAAAAAPAAgAAQAAAAEAAAAPAAkAAQAAAAEAAAAPAAoAAQAAAAIAAAAQAAoAAQABAAIAAAARAAoAAQABAAIAAAASAAoAAQABAAIAAAATAAoAAQACAAIAAAATAAkAAQACAAEAAAATAAgAAQACAAEAAAATAAcAAQACAAAAAAASAAcAAQABAAAAAAARAAcAAQABAAAAAAAQAAcAAQABAAAAAAAQAAgAAQABAAEAAAAQAAkAAQABAAEAAAARAAkAAQABAAEAAAASAAkAAQABAAEAAAASAAgAAQABAAEAAAARAAgAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_wac34")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("5_4yngn")]
-position = Vector2(168, 115)
+[node name="Player" parent="." instance=ExtResource("5_4yngn")]
+position = Vector2(159, 152)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryInterface" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_tqlsa")
 
 [node name="PlayerInventory" parent="CanvasLayer/InventoryInterface" instance=ExtResource("5_umdci")]
 layout_mode = 0
+offset_right = 72.0
+offset_bottom = 48.0

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cq2mqrhyxpyp4" path="res://inventory/inventory.gd" id="1_62wf1"]
 
 [node name="Inventory" type="PanelContainer"]
-custom_minimum_size = Vector2(60, 40)
+custom_minimum_size = Vector2(72, 48)
 offset_right = 60.0
 offset_bottom = 40.0
 script = ExtResource("1_62wf1")
