@@ -910,3 +910,5 @@ visible = false
 modulate = Color(1, 1, 1, 0.384314)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0

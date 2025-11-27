@@ -23,6 +23,8 @@ var state = State.idle
 @export var inventory_data: InventoryData
 #endregion
 
+var interacting
+
 func get_input() -> void:
 	var input_direction = Input.get_vector('left','right','up','down')
 	if can_walk():
@@ -39,6 +41,7 @@ func _physics_process(_delta: float) -> void:
 	handle_running()
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
+	interact()
 
 func handle_movement() -> void:
 	if can_walk():
@@ -155,6 +158,9 @@ func can_run() -> bool:
 func can_work() -> bool:
 	return state == State.idle or state == State.walk
 
+func can_interact() -> bool:
+	return state == State.idle or state == State.walk
+
 func handle_running() -> void:
 	if can_run():
 		if Input.is_action_pressed('run'):
@@ -164,3 +170,12 @@ func handle_running() -> void:
 	else:
 		accel = speed
 #endregion
+
+func interact() -> void:
+	if can_interact() and Input.is_action_just_pressed("interact")\
+	 and interacting:
+		interacting.player_interact()
+	else:
+		pass
+		
+		
