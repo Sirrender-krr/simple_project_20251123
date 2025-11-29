@@ -177,5 +177,3 @@ func interact() -> void:
 		interacting.player_interact()
 	else:
 		pass
-		
-		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://0eu23vvbl3gr"]
+[gd_scene load_steps=16 format=4 uid="uid://0eu23vvbl3gr"]
 
 [ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_sextl"]
 [ext_resource type="Texture2D" uid="uid://b2rnb6sntcvbl" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Grass.png" id="1_umdci"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d4d7f4fooftrl" path="res://inventory/inventory.tscn" id="5_umdci"]
 [ext_resource type="Script" uid="uid://cvcrfk3tq2216" path="res://scripts/inventory_interface.gd" id="6_tqlsa"]
 [ext_resource type="PackedScene" uid="uid://dqi6l3jbvv3hh" path="res://inventory/slot.tscn" id="8_3jl6o"]
+[ext_resource type="PackedScene" uid="uid://dx1ed0nbeqx33" path="res://scenes/chest.tscn" id="9_4yngn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wac34"]
 texture = ExtResource("1_umdci")
@@ -905,6 +906,13 @@ layout_mode = 0
 offset_right = 72.0
 offset_bottom = 48.0
 
+[node name="ExternalInventory" parent="CanvasLayer/InventoryInterface" instance=ExtResource("5_umdci")]
+visible = false
+layout_mode = 0
+offset_left = 368.0
+offset_right = 440.0
+offset_bottom = 48.0
+
 [node name="GrabSlot" parent="CanvasLayer/InventoryInterface" instance=ExtResource("8_3jl6o")]
 visible = false
 modulate = Color(1, 1, 1, 0.384314)
@@ -912,3 +920,6 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 20.0
 offset_bottom = 20.0
+
+[node name="Chest" parent="." instance=ExtResource("9_4yngn")]
+position = Vector2(212, 164)
