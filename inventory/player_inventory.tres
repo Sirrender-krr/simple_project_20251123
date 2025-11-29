@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=8 format=3 uid="uid://c4ksr8qy56l6q"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=10 format=3 uid="uid://c4ksr8qy56l6q"]
 
 [ext_resource type="Script" uid="uid://dncgayh5t1qfq" path="res://inventory/inventory_data.gd" id="1_fge2b"]
 [ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="2_x0x00"]
@@ -23,7 +23,19 @@ item_data = ExtResource("3_e8alh")
 quantity = 8
 metadata/_custom_type_script = "uid://c5cprt1l0e75w"
 
+[sub_resource type="Resource" id="Resource_65xq6"]
+script = ExtResource("2_x0x00")
+item_data = ExtResource("3_e8alh")
+quantity = 5
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
+[sub_resource type="Resource" id="Resource_3ih0p"]
+script = ExtResource("2_x0x00")
+item_data = ExtResource("3_e8alh")
+quantity = 3
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
 [resource]
 script = ExtResource("1_fge2b")
-slot_datas = Array[ExtResource("2_x0x00")]([SubResource("Resource_qiluv"), SubResource("Resource_m5o6q"), SubResource("Resource_fi1x0"), null, null, null])
+slot_datas = Array[ExtResource("2_x0x00")]([SubResource("Resource_qiluv"), SubResource("Resource_m5o6q"), SubResource("Resource_fi1x0"), SubResource("Resource_65xq6"), SubResource("Resource_3ih0p"), null])
 metadata/_custom_type_script = "uid://dncgayh5t1qfq"

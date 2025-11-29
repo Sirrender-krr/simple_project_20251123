@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://0eu23vvbl3gr"]
+[gd_scene load_steps=20 format=4 uid="uid://0eu23vvbl3gr"]
 
 [ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_sextl"]
 [ext_resource type="Texture2D" uid="uid://b2rnb6sntcvbl" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Grass.png" id="1_umdci"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://cvcrfk3tq2216" path="res://scripts/inventory_interface.gd" id="6_tqlsa"]
 [ext_resource type="PackedScene" uid="uid://dqi6l3jbvv3hh" path="res://inventory/slot.tscn" id="8_3jl6o"]
 [ext_resource type="PackedScene" uid="uid://dx1ed0nbeqx33" path="res://scenes/chest.tscn" id="9_4yngn"]
+[ext_resource type="PackedScene" uid="uid://chv2adphvovra" path="res://inventory/Pickups/pickup.tscn" id="10_87bok"]
+[ext_resource type="Resource" uid="uid://crvjaqgjpmjm6" path="res://inventory/item_resources/corn.tres" id="11_arowr"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="12_758ji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wac34"]
 texture = ExtResource("1_umdci")
@@ -870,6 +873,12 @@ terrain_set_0/terrain_0/name = "tilled_dirt"
 terrain_set_0/terrain_0/color = Color(0.568282, 0.358472, 0.254788, 1)
 sources/1 = SubResource("TileSetAtlasSource_i6bp4")
 
+[sub_resource type="Resource" id="Resource_arowr"]
+script = ExtResource("12_758ji")
+item_data = ExtResource("11_arowr")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_sextl")
@@ -923,3 +932,10 @@ offset_bottom = 20.0
 
 [node name="Chest" parent="." instance=ExtResource("9_4yngn")]
 position = Vector2(212, 164)
+
+[node name="Pickup" parent="." instance=ExtResource("10_87bok")]
+position = Vector2(141, 226)
+slot_data = SubResource("Resource_arowr")
+
+[connection signal="gui_input" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_gui_input"]
+[connection signal="visibility_changed" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_visibility_changed"]

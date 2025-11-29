@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://chv2adphvovra"]
+
+[ext_resource type="Script" uid="uid://cgmmdyk1r2fsu" path="res://inventory/Pickups/pickup.gd" id="1_smvlh"]
+[ext_resource type="Texture2D" uid="uid://cncg8ia84dit7" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Basic_Plants.png" id="1_uyp7x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smvlh"]
+atlas = ExtResource("1_uyp7x")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndhiy"]
+radius = 8.0
+
+[node name="Pickup" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_smvlh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_smvlh")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_ndhiy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
