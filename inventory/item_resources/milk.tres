@@ -11,7 +11,9 @@ region = Rect2(32, 0, 16, 16)
 script = ExtResource("1_461y8")
 heal_value = 30
 name = "Milk"
-description = "Full of calcium, some might say it is good for your bones. Gain stamina 50 points."
+description = "Full of calcium, some might 
+say it is good for your bones. 
+Gain stamina 50 points."
 stackable = true
 MAX_STACK_SIZE = 5
 texture = SubResource("AtlasTexture_xr5rx")

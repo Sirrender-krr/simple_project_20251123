@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" load_steps=4 format=3 uid="uid://b7kcpj0lj0mpp"]
+
+[ext_resource type="Script" uid="uid://w267yyilin7" path="res://inventory/item_data_equip.gd" id="1_upuh4"]
+[ext_resource type="Texture2D" uid="uid://xek55cs533le" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Basic_tools_and_meterials.png" id="2_ainxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe72s"]
+atlas = ExtResource("2_ainxa")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_upuh4")
+tools_catagory = 3
+name = "Watering Can"
+description = "A watering can that gives
+water to all plant."
+stackable = false
+MAX_STACK_SIZE = 1
+texture = SubResource("AtlasTexture_fe72s")
+metadata/_custom_type_script = "uid://w267yyilin7"

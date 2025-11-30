@@ -20,7 +20,7 @@ func player_interact() -> void:
 	else:
 		animated_sprite.frame = 4
 		animated_sprite.play_backwards("default")
-		
+
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -30,7 +30,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	var player = body
 	player.interacting = null
+	chest_close()
+
+func chest_close() -> void:
 	if chest_open == true:
 		animated_sprite.frame = 4
 		animated_sprite.play_backwards("default")
+		get_parent().toggle_inventory_interface()
 	chest_open = false
