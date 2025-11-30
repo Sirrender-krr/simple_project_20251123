@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://0eu23vvbl3gr"]
+[gd_scene load_steps=21 format=4 uid="uid://0eu23vvbl3gr"]
 
 [ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_sextl"]
 [ext_resource type="Texture2D" uid="uid://b2rnb6sntcvbl" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Grass.png" id="1_umdci"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cvcrfk3tq2216" path="res://scripts/inventory_interface.gd" id="6_tqlsa"]
 [ext_resource type="PackedScene" uid="uid://dqi6l3jbvv3hh" path="res://inventory/slot.tscn" id="8_3jl6o"]
 [ext_resource type="PackedScene" uid="uid://dx1ed0nbeqx33" path="res://scenes/chest.tscn" id="9_4yngn"]
+[ext_resource type="PackedScene" uid="uid://c6bd7fk4k8c88" path="res://inventory/hot_bar_inventory.tscn" id="9_758ji"]
 [ext_resource type="PackedScene" uid="uid://chv2adphvovra" path="res://inventory/Pickups/pickup.tscn" id="10_87bok"]
 [ext_resource type="Resource" uid="uid://crvjaqgjpmjm6" path="res://inventory/item_resources/corn.tres" id="11_arowr"]
 [ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="12_758ji"]
@@ -898,6 +899,8 @@ tile_set = SubResource("TileSet_wac34")
 [node name="Player" parent="." instance=ExtResource("5_4yngn")]
 position = Vector2(159, 152)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryInterface" type="Control" parent="CanvasLayer"]
@@ -912,15 +915,12 @@ script = ExtResource("6_tqlsa")
 
 [node name="PlayerInventory" parent="CanvasLayer/InventoryInterface" instance=ExtResource("5_umdci")]
 layout_mode = 0
-offset_right = 72.0
-offset_bottom = 48.0
 
 [node name="ExternalInventory" parent="CanvasLayer/InventoryInterface" instance=ExtResource("5_umdci")]
 visible = false
 layout_mode = 0
-offset_left = 368.0
-offset_right = 440.0
-offset_bottom = 48.0
+offset_left = 224.0
+offset_right = 314.0
 
 [node name="GrabSlot" parent="CanvasLayer/InventoryInterface" instance=ExtResource("8_3jl6o")]
 visible = false
@@ -929,6 +929,8 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 20.0
 offset_bottom = 20.0
+
+[node name="HotBarInventory" parent="CanvasLayer" instance=ExtResource("9_758ji")]
 
 [node name="Chest" parent="." instance=ExtResource("9_4yngn")]
 position = Vector2(212, 164)

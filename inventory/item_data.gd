@@ -6,3 +6,6 @@ class_name ItemData
 @export var stackable: bool = false
 @export var MAX_STACK_SIZE: int = 1
 @export var texture: AtlasTexture
+
+func use(target) -> void:
+	pass

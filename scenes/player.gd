@@ -13,17 +13,26 @@ const speed: float = 40.0
 const run_speed: float = 100.0
 var accel = speed
 
+##Stamina
+var health: int = 100
+
 enum dir {left, right, up, down}
 enum State {idle, walk, work}
 
 var direction = dir.down
-var state = State.idle
+var state = State.idle#:
+	#set(x):
+		#state = x
+		#print(State.find_key(state))
 #endregion
 #region inventory var
 @export var inventory_data: InventoryData
+var interacting
+
 #endregion
 
-var interacting
+func _ready() -> void:
+	PlayerManager.player = self
 
 func get_input() -> void:
 	var input_direction = Input.get_vector('left','right','up','down')
@@ -90,8 +99,9 @@ func handle_animation() -> void:
 			animated_sprite.play('idle_down')
 #endregion
 #region tools animation
+func _unhandled_input(event: InputEvent) -> void:
 	##tools animation
-	if Input.is_action_just_pressed("click"):
+	if event.is_action_pressed("click"):
 		if can_work():
 			state = State.work
 			if tools == Tools.hoe:
@@ -161,6 +171,7 @@ func can_work() -> bool:
 func can_interact() -> bool:
 	return state == State.idle or state == State.walk
 
+#endregion
 func handle_running() -> void:
 	if can_run():
 		if Input.is_action_pressed('run'):
@@ -169,7 +180,6 @@ func handle_running() -> void:
 			accel= speed
 	else:
 		accel = speed
-#endregion
 
 func interact() -> void:
 	if can_interact() and Input.is_action_just_pressed("interact")\
@@ -177,3 +187,6 @@ func interact() -> void:
 		interacting.player_interact()
 	else:
 		pass
+
+func heal(heal_value:int) -> void:
+	health += heal_value

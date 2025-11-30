@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataConsumeable" load_steps=4 format=3 uid="uid://dbrlo84r2h81l"]
+
+[ext_resource type="Script" uid="uid://cqch4dx7c641w" path="res://inventory/item_data_consumable.gd" id="1_461y8"]
+[ext_resource type="Texture2D" uid="uid://bnmy7opywkw4w" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Simple_Milk_and_grass_item.png" id="2_x1s6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr5rx"]
+atlas = ExtResource("2_x1s6h")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_461y8")
+heal_value = 30
+name = "Milk"
+description = "Full of calcium, some might say it is good for your bones. Gain stamina 50 points."
+stackable = true
+MAX_STACK_SIZE = 5
+texture = SubResource("AtlasTexture_xr5rx")
+metadata/_custom_type_script = "uid://cqch4dx7c641w"
