@@ -2,6 +2,7 @@ extends Node2D
 
 const PickUp = preload("res://inventory/Pickups/pickup.tscn")
 
+signal inv_show(inv_visible: bool)
 
 @onready var player: Player = $Player
 @onready var inventory_interface: Control = $CanvasLayer/InventoryInterface
@@ -22,10 +23,12 @@ func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	
 	if inventory_interface.visible:
 		hot_bar_inventory.hide()
+		inv_show.emit(inventory_interface.visible)
 		inventory_interface.set_anchors_preset(Control.PRESET_FULL_RECT)
 		
 	else:
 		hot_bar_inventory.show()
+		inv_show.emit(inventory_interface.visible)
 		inventory_interface.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	
 	if external_inventory_owner:
