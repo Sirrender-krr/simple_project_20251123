@@ -104,6 +104,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		if can_work():
 			state = State.work
+			if tools == Tools.none:
+				state = State.idle
+				return
 			if tools == Tools.hoe:
 				if direction == dir.down:
 					animated_sprite.play("hoe_down")
