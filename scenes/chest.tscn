@@ -1,8 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx1ed0nbeqx33"]
+[gd_scene load_steps=20 format=3 uid="uid://dx1ed0nbeqx33"]
 
 [ext_resource type="Texture2D" uid="uid://qd5rav2o024x" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Chest.png" id="1_oii8l"]
 [ext_resource type="Script" uid="uid://dsxh17s48e54n" path="res://scenes/chest.gd" id="1_sy5e1"]
 [ext_resource type="Resource" uid="uid://cw1m3ke8kdli7" path="res://inventory/chest.tres" id="2_gqd3d"]
+[ext_resource type="Resource" uid="uid://cx3jifhriq8nm" path="res://inventory/item_resources/chest.tres" id="2_kg5gm"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="3_8me8i"]
+[ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="3_yue2o"]
+[ext_resource type="PackedScene" uid="uid://chy7p282ruvhj" path="res://scripts/components/hurt_component.tscn" id="5_yhylo"]
+[ext_resource type="PackedScene" uid="uid://cl68koa38c3gq" path="res://scripts/components/damage_component.tscn" id="6_w02o5"]
+
+[sub_resource type="Resource" id="Resource_lfymr"]
+script = ExtResource("3_8me8i")
+item_data = ExtResource("2_kg5gm")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhylo"]
+shader = ExtResource("3_yue2o")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy5e1"]
 atlas = ExtResource("1_oii8l")
@@ -53,13 +69,18 @@ size = Vector2(16, 7)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8me8i"]
 radius = 23.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w02o5"]
+size = Vector2(16, 8)
+
 [node name="Chest" type="StaticBody2D" groups=["external_inventory"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_sy5e1")
+chest_icon = SubResource("Resource_lfymr")
 inventory_data = ExtResource("2_gqd3d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_yhylo")
 sprite_frames = SubResource("SpriteFrames_ilhio")
 offset = Vector2(0, -8)
 
@@ -73,6 +94,18 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_8me8i")
+debug_color = Color(0.276823, 0.622764, 0.312934, 0.42)
+
+[node name="HurtComponent" parent="." instance=ExtResource("5_yhylo")]
+tools = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_w02o5")
+debug_color = Color(0.770889, 0.434555, 0.257286, 0.42)
+
+[node name="DamageComponent" parent="." instance=ExtResource("6_w02o5")]
+max_damage = 5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -142,13 +142,13 @@ func _unhandled_input(event: InputEvent) -> void:
 					state = State.idle
 				elif direction == dir.left:
 					animated_sprite.play("axe_left")
-					hit_spot_collision_shape.position = Vector2(-10,0)
+					hit_spot_collision_shape.position = Vector2(-10,-3)
 					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 				elif direction == dir.right:
 					animated_sprite.play("axe_right")
-					hit_spot_collision_shape.position = Vector2(10,0)
+					hit_spot_collision_shape.position = Vector2(10,-3)
 					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle

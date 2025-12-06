@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataChest" load_steps=4 format=3 uid="uid://cx3jifhriq8nm"]
+
+[ext_resource type="Script" uid="uid://dwb1k0brvqhic" path="res://inventory/item_data_chest.gd" id="1_dxmxt"]
+[ext_resource type="Texture2D" uid="uid://qd5rav2o024x" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Chest.png" id="2_85j5b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85j5b"]
+atlas = ExtResource("2_85j5b")
+region = Rect2(16, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_dxmxt")
+name = "Chest"
+description = "A stroge where you
+can hold items"
+stackable = false
+MAX_STACK_SIZE = 1
+texture = SubResource("AtlasTexture_85j5b")
+metadata/_custom_type_script = "uid://dwb1k0brvqhic"

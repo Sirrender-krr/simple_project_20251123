@@ -3,9 +3,13 @@ extends StaticBody2D
 signal toggle_inventory(external_inventory_owner)
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hurt_component: HurtComponent = $HurtComponent
+@onready var damage_component: DamageComponent = $DamageComponent
 
+@export var chest_icon: SlotData
 @export var inventory_data: InventoryData
 
+var PickUp = preload("res://inventory/Pickups/pickup.tscn")
 
 var chest_open:bool = false:
 	set(x):
@@ -21,6 +25,10 @@ var inv_open:bool = false:
 
 func _ready() -> void:
 	animated_sprite.frame = 0
+	hurt_component.hurt.connect(on_hurt)
+	damage_component.max_damaged_reached.connect(on_max_damage)
+	animated_sprite.material.set_shader_parameter("shake_intensity",0.0)
+
 
 func player_interact() -> void:
 	toggle_inventory.emit(self)
@@ -57,7 +65,6 @@ func open_chest() -> void:
 	else:
 		chest_open = false
 
-
 func chest_close() -> void:
 	if chest_open == true:
 		animated_sprite.frame = 4
@@ -65,3 +72,19 @@ func chest_close() -> void:
 		get_parent().toggle_inventory_interface()
 		chest_open = false
 		get_parent().inv_show.disconnect(chest_check)
+
+func on_hurt(damage:int) -> void:
+	damage_component.apply_damage(damage)
+	animated_sprite.material.set_shader_parameter("shake_intensity",0.5)
+	await get_tree().create_timer(0.5).timeout
+	animated_sprite.material.set_shader_parameter("shake_intensity",0.0)
+
+func on_max_damage() -> void:
+	call_deferred('add_chest_pickup')
+	queue_free()
+
+func add_chest_pickup() -> void:
+	var chest_instance = PickUp.instantiate()
+	chest_instance.slot_data = chest_icon
+	chest_instance.global_position = global_position
+	get_parent().add_child(chest_instance)
