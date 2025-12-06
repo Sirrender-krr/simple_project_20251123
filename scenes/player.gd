@@ -5,6 +5,7 @@ signal toggle_inventory
 
 #region player control var
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_spot_collision_shape: CollisionShape2D = $HitComponent/HitSpotCollisionShape
 
 enum Tools {none, hoe, axe, watering_can}
 @export var tools: Tools = Tools.none
@@ -33,6 +34,8 @@ var interacting
 
 func _ready() -> void:
 	PlayerManager.player = self
+	hit_spot_collision_shape.disabled = true
+	hit_spot_collision_shape.position = Vector2(0,0)
 
 func get_input() -> void:
 	var input_direction = Input.get_vector('left','right','up','down')
@@ -127,35 +130,51 @@ func _unhandled_input(event: InputEvent) -> void:
 			if tools == Tools.axe:
 				if direction == dir.down:
 					animated_sprite.play("axe_down")
+					hit_spot_collision_shape.position = Vector2(0,3)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 				elif direction == dir.up:
 					animated_sprite.play("axe_up")
+					hit_spot_collision_shape.position = Vector2(0,-20)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 				elif direction == dir.left:
 					animated_sprite.play("axe_left")
+					hit_spot_collision_shape.position = Vector2(-10,0)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 				elif direction == dir.right:
 					animated_sprite.play("axe_right")
+					hit_spot_collision_shape.position = Vector2(10,0)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 			if tools == Tools.watering_can:
 				if direction == dir.down:
 					animated_sprite.play("water_down")
+					hit_spot_collision_shape.position = Vector2(0,3)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 				elif direction == dir.up:
 					animated_sprite.play("water_up")
+					hit_spot_collision_shape.position = Vector2(0,-20)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 				elif direction == dir.left:
 					animated_sprite.play("water_left")
+					hit_spot_collision_shape.position = Vector2(-19,0)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 				elif direction == dir.right:
 					animated_sprite.play("water_right")
+					hit_spot_collision_shape.position = Vector2(19,0)
+					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
 #endregion
@@ -193,3 +212,10 @@ func interact() -> void:
 
 func heal(heal_value:int) -> void:
 	health += heal_value
+
+func hit() -> void:
+	await get_tree().create_timer(.25).timeout
+	hit_spot_collision_shape.disabled=false
+	await get_tree().create_timer(.25).timeout
+	hit_spot_collision_shape.disabled=true
+	hit_spot_collision_shape.position=Vector2(0,0)
