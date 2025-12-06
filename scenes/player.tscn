@@ -393,7 +393,7 @@ animations = [{
 size = Vector2(6, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
-radius = 3.0
+radius = 2.0
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -404,7 +404,7 @@ inventory_data = ExtResource("2_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fulsm")
-animation = &"water_right"
+animation = &"axe_right"
 autoplay = "idle_down"
 frame = 1
 offset = Vector2(0, -8)
@@ -416,6 +416,6 @@ shape = SubResource("RectangleShape2D_4r5pv")
 [node name="HitComponent" parent="." instance=ExtResource("5_qlg0r")]
 
 [node name="HitSpotCollisionShape" type="CollisionShape2D" parent="HitComponent"]
-position = Vector2(19, 0)
+position = Vector2(9, -3)
 shape = SubResource("CircleShape2D_qlg0r")
 debug_color = Color(0.818455, 0.00553732, 0.114477, 0.419608)

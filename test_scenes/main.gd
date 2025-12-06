@@ -1,6 +1,8 @@
 extends Node2D
 
-const PickUp = preload("res://inventory/Pickups/pickup.tscn")
+var PickUp = preload("res://inventory/Pickups/pickup.tscn")
+var Chest = preload("res://scenes/chest.tscn")
+
 
 signal inv_show(inv_visible: bool)
 
@@ -39,8 +41,13 @@ func toggle_inventory_interface(external_inventory_owner = null) -> void:
 func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
 	var pick_up = PickUp.instantiate()
 	pick_up.slot_data = slot_data
-	pick_up.position = position_in_radius()
-	add_child(pick_up)
+	if pick_up.slot_data.item_data is ItemDataChest:
+		var chest = Chest.instantiate()
+		chest.global_position = position_in_radius()
+		add_child(chest)
+	else:
+		pick_up.position = position_in_radius()
+		add_child(pick_up)
 
 ##calculate drop position
 func position_in_radius() -> Vector2:

@@ -3,4 +3,6 @@
 [ext_resource type="Script" uid="uid://ds4w4mhfgdb5m" path="res://scripts/components/hit_component.gd" id="1_dvn15"]
 
 [node name="HitComponent" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_dvn15")
