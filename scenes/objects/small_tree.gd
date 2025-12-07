@@ -24,14 +24,14 @@ func on_max_damage_reached() -> void:
 
 func add_log_scene() -> void:
 	var log_instance = PickUp.instantiate()
-	log_instance.slot_data = log
+	log_instance.slot_data = log.duplicate()
 	log_instance.global_position = global_position
 	get_parent().add_child(log_instance)
 	randomize()
 	var extra_log = randf()
 	if extra_log > 0.9:
 		var extra_log_instance = PickUp.instantiate()
-		extra_log_instance.slot_data = log
+		extra_log_instance.slot_data = log.duplicate()
 		extra_log_instance.global_position = global_position + Vector2(2,0)
 		get_parent().add_child(extra_log_instance)
 	else:
