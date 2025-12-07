@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvs23m5x88f4b"]
+
+[ext_resource type="PackedScene" uid="uid://bwqfpgxuj7su7" path="res://scenes/objects/small_tree.tscn" id="1_sy7nu"]
+[ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="2_q8w8m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwmmo"]
+resource_local_to_scene = true
+shader = ExtResource("2_q8w8m")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sy7nu"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8w8m"]
+atlas = SubResource("CompressedTexture2D_sy7nu")
+region = Rect2(16, 0, 32, 32)
+
+[node name="BigTree" instance=ExtResource("1_sy7nu")]
+material = SubResource("ShaderMaterial_uwmmo")
+texture = SubResource("AtlasTexture_q8w8m")
+offset = Vector2(0, -13)
+extra_log_drop_rat = 1.0
+
+[node name="DamageComponent" parent="." index="2"]
+max_damage = 5

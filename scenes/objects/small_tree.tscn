@@ -1,7 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bwqfpgxuj7su7"]
 
 [ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="1_bci37"]
-[ext_resource type="Texture2D" uid="uid://niqqtbvccq3g" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Basic_Grass_Biom_things.png" id="1_g81ah"]
 [ext_resource type="Script" uid="uid://c6spdc4rf1wp4" path="res://scenes/objects/small_tree.gd" id="2_4fdwj"]
 [ext_resource type="PackedScene" uid="uid://chy7p282ruvhj" path="res://scripts/components/hurt_component.tscn" id="2_21b8l"]
 [ext_resource type="PackedScene" uid="uid://cl68koa38c3gq" path="res://scripts/components/damage_component.tscn" id="3_67mvu"]
@@ -14,8 +13,11 @@ shader = ExtResource("1_bci37")
 shader_parameter/shake_intensity = 0.0
 shader_parameter/shake_speed = 20.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_21b8l"]
-atlas = ExtResource("1_g81ah")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bci37"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqt1i"]
+atlas = SubResource("CompressedTexture2D_bci37")
 region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="Resource" id="Resource_bstq3"]
@@ -33,7 +35,7 @@ size = Vector2(6, 7)
 [node name="SmallTree" type="Sprite2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_vqt1i")
-texture = SubResource("AtlasTexture_21b8l")
+texture = SubResource("AtlasTexture_vqt1i")
 offset = Vector2(0, -10)
 script = ExtResource("2_4fdwj")
 log = SubResource("Resource_bstq3")

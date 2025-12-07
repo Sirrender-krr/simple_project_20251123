@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://0eu23vvbl3gr"]
+[gd_scene load_steps=25 format=4 uid="uid://0eu23vvbl3gr"]
 
 [ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_sextl"]
 [ext_resource type="Texture2D" uid="uid://b2rnb6sntcvbl" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Grass.png" id="1_umdci"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cpolyfl1al6pr" path="res://scenes/player.tscn" id="5_4yngn"]
 [ext_resource type="PackedScene" uid="uid://bwqfpgxuj7su7" path="res://scenes/objects/small_tree.tscn" id="5_61ae3"]
 [ext_resource type="PackedScene" uid="uid://d4d7f4fooftrl" path="res://inventory/inventory.tscn" id="5_umdci"]
+[ext_resource type="PackedScene" uid="uid://dvs23m5x88f4b" path="res://scenes/objects/big_tree.tscn" id="6_ktnis"]
 [ext_resource type="Script" uid="uid://cvcrfk3tq2216" path="res://scripts/inventory_interface.gd" id="6_tqlsa"]
 [ext_resource type="PackedScene" uid="uid://dqi6l3jbvv3hh" path="res://inventory/slot.tscn" id="8_3jl6o"]
 [ext_resource type="PackedScene" uid="uid://dx1ed0nbeqx33" path="res://scenes/chest.tscn" id="9_4yngn"]
@@ -877,6 +878,7 @@ sources/1 = SubResource("TileSetAtlasSource_i6bp4")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_61ae3"]
 scenes/1/scene = ExtResource("5_61ae3")
+scenes/2/scene = ExtResource("6_ktnis")
 
 [sub_resource type="TileSet" id="TileSet_ktnis"]
 sources/1 = SubResource("TileSetScenesCollectionSource_61ae3")
@@ -904,7 +906,8 @@ tile_map_data = PackedByteArray("AAAJAAcAAQAAAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAA
 tile_set = SubResource("TileSet_wac34")
 
 [node name="objects" type="TileMapLayer" parent="tile_map"]
-tile_map_data = PackedByteArray("AAAJAAUAAQAAAAAAAQAJAAYAAQAAAAAAAQAIAAYAAQAAAAAAAQANAAYAAQAAAAAAAQANAAUAAQAAAAAAAQAMAAUAAQAAAAAAAQALAAUAAQAAAAAAAQAKAAUAAQAAAAAAAQAKAAYAAQAAAAAAAQAMAAYAAQAAAAAAAQAOAAYAAQAAAAAAAQAPAAYAAQAAAAAAAQA=")
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAJAAUAAQAAAAAAAQAJAAYAAQAAAAAAAQAIAAYAAQAAAAAAAQANAAYAAQAAAAAAAQAMAAUAAQAAAAAAAQALAAUAAQAAAAAAAQAKAAUAAQAAAAAAAQAKAAYAAQAAAAAAAQAMAAYAAQAAAAAAAQAOAAYAAQAAAAAAAQAPAAYAAQAAAAAAAQAIAAsAAQAAAAAAAgAJAAsAAQAAAAAAAgAKAAsAAQAAAAAAAgAKAAwAAQAAAAAAAgALAAwAAQAAAAAAAgAMAAwAAQAAAAAAAgANAAwAAQAAAAAAAgAJAAwAAQAAAAAAAgAIAAwAAQAAAAAAAgAGAAoAAQAAAAAAAgAGAAsAAQAAAAAAAgA=")
 tile_set = SubResource("TileSet_ktnis")
 
 [node name="Player" parent="." instance=ExtResource("5_4yngn")]

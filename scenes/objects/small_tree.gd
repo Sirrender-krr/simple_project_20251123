@@ -4,6 +4,7 @@ extends Sprite2D
 @onready var damage_component: DamageComponent = $DamageComponent
 
 @export var log: SlotData
+@export_range(0.0, 1.0, 0.1) var extra_log_drop_rat:float = 0.1
 
 var PickUp = preload("res://inventory/Pickups/pickup.tscn")
 
@@ -29,7 +30,7 @@ func add_log_scene() -> void:
 	get_parent().add_child(log_instance)
 	randomize()
 	var extra_log = randf()
-	if extra_log > 0.9:
+	if extra_log > 1-extra_log_drop_rat:
 		var extra_log_instance = PickUp.instantiate()
 		extra_log_instance.slot_data = log.duplicate()
 		extra_log_instance.global_position = global_position + Vector2(2,0)
