@@ -136,7 +136,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					state = State.idle
 				elif direction == dir.up:
 					animated_sprite.play("axe_up")
-					hit_spot_collision_shape.position = Vector2(0,-20)
+					hit_spot_collision_shape.position = Vector2(0,-18)
 					hit()
 					await get_tree().create_timer(.5).timeout
 					state = State.idle
