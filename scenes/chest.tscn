@@ -16,6 +16,7 @@ quantity = 1
 metadata/_custom_type_script = "uid://c5cprt1l0e75w"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhylo"]
+resource_local_to_scene = true
 shader = ExtResource("3_yue2o")
 shader_parameter/shake_intensity = 0.0
 shader_parameter/shake_speed = 20.0

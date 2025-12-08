@@ -33,7 +33,7 @@ func add_log_scene() -> void:
 	if extra_log > 1-extra_log_drop_rat:
 		var extra_log_instance = PickUp.instantiate()
 		extra_log_instance.slot_data = log.duplicate()
-		extra_log_instance.global_position = global_position + Vector2(2,0)
+		extra_log_instance.global_position = global_position + Vector2(2,2)
 		get_parent().add_child(extra_log_instance)
 	else:
 		pass
