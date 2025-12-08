@@ -7,7 +7,7 @@ signal toggle_inventory(external_inventory_owner)
 @onready var damage_component: DamageComponent = $DamageComponent
 
 @export var chest_icon: SlotData
-@export var inventory_data: InventoryData
+@export var inventory_data:InventoryData
 
 var PickUp = preload("res://inventory/Pickups/pickup.tscn")
 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyqpvt133ymoj"]
+
+[ext_resource type="PackedScene" uid="uid://bwqfpgxuj7su7" path="res://scenes/objects/small_tree.tscn" id="1_7c88i"]
+[ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="2_6jkjv"]
+[ext_resource type="Resource" uid="uid://ce360lptchuou" path="res://inventory/item_resources/stone.tres" id="3_xnkle"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="4_1nmxg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnkle"]
+resource_local_to_scene = true
+shader = ExtResource("2_6jkjv")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0cy6w"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvljo"]
+atlas = SubResource("CompressedTexture2D_0cy6w")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="Resource" id="Resource_mldux"]
+script = ExtResource("4_1nmxg")
+item_data = ExtResource("3_xnkle")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nmxg"]
+radius = 6.0
+
+[node name="Rock" instance=ExtResource("1_7c88i")]
+material = SubResource("ShaderMaterial_xnkle")
+texture = SubResource("AtlasTexture_tvljo")
+offset = Vector2(0, -3)
+log = SubResource("Resource_mldux")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" parent="HurtComponent" index="0"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_1nmxg")

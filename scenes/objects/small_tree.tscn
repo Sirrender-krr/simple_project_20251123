@@ -27,7 +27,7 @@ quantity = 1
 metadata/_custom_type_script = "uid://c5cprt1l0e75w"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_67mvu"]
-radius = 3.0
+radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67mvu"]
 size = Vector2(6, 7)

@@ -28,12 +28,10 @@ func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	if inventory_interface.visible:
 		hot_bar_inventory.hide()
 		inv_show.emit(inventory_interface.visible)
-		inventory_interface.set_anchors_preset(Control.PRESET_FULL_RECT)
 		
 	else:
 		hot_bar_inventory.show()
 		inv_show.emit(inventory_interface.visible)
-		inventory_interface.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	
 	if external_inventory_owner:
 		inventory_interface.set_external_inventory(external_inventory_owner)
