@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://0eu23vvbl3gr"]
+[gd_scene load_steps=23 format=4 uid="uid://0eu23vvbl3gr"]
 
 [ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_sextl"]
 [ext_resource type="Texture2D" uid="uid://b2rnb6sntcvbl" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Grass.png" id="1_umdci"]
@@ -13,9 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dqi6l3jbvv3hh" path="res://inventory/slot.tscn" id="8_3jl6o"]
 [ext_resource type="PackedScene" uid="uid://dx1ed0nbeqx33" path="res://scenes/chest.tscn" id="9_4yngn"]
 [ext_resource type="PackedScene" uid="uid://c6bd7fk4k8c88" path="res://inventory/hot_bar_inventory.tscn" id="9_758ji"]
-[ext_resource type="PackedScene" uid="uid://chv2adphvovra" path="res://inventory/Pickups/pickup.tscn" id="10_87bok"]
-[ext_resource type="Resource" uid="uid://crvjaqgjpmjm6" path="res://inventory/item_resources/corn.tres" id="11_arowr"]
-[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="12_758ji"]
+[ext_resource type="Script" uid="uid://dm0nk42ftko1k" path="res://scripts/components/tilling_dirt_component.gd" id="14_61ae3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wac34"]
 texture = ExtResource("1_umdci")
@@ -885,15 +883,10 @@ scenes/3/scene = ExtResource("7_8su23")
 [sub_resource type="TileSet" id="TileSet_ktnis"]
 sources/1 = SubResource("TileSetScenesCollectionSource_61ae3")
 
-[sub_resource type="Resource" id="Resource_arowr"]
-script = ExtResource("12_758ji")
-item_data = ExtResource("11_arowr")
-quantity = 1
-metadata/_custom_type_script = "uid://c5cprt1l0e75w"
-
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("ground_tilemap_layer")]
 y_sort_enabled = true
 script = ExtResource("1_sextl")
+ground_tilemap_layer = NodePath("tile_map/ground")
 
 [node name="tile_map" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -949,11 +942,12 @@ offset_bottom = 20.0
 [node name="HotBarInventory" parent="CanvasLayer" instance=ExtResource("9_758ji")]
 
 [node name="Chest" parent="." instance=ExtResource("9_4yngn")]
-position = Vector2(212, 164)
+position = Vector2(208, 160)
 
-[node name="Pickup" parent="." instance=ExtResource("10_87bok")]
-position = Vector2(141, 226)
-slot_data = SubResource("Resource_arowr")
+[node name="TillingDirtComponent" type="Node" parent="." node_paths=PackedStringArray("ground_tilemap_layer", "tilled_dirt_tilemap_laner")]
+script = ExtResource("14_61ae3")
+ground_tilemap_layer = NodePath("../tile_map/ground")
+tilled_dirt_tilemap_laner = NodePath("../tile_map/tilled_dirt")
 
 [connection signal="gui_input" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_gui_input"]
 [connection signal="visibility_changed" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_visibility_changed"]

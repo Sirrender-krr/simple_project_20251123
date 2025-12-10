@@ -3,6 +3,7 @@ extends Node2D
 var PickUp = preload("res://inventory/Pickups/pickup.tscn")
 var Chest = preload("res://scenes/chest.tscn")
 
+@export var ground_tilemap_layer: TileMapLayer
 
 signal inv_show(inv_visible: bool)
 
@@ -17,8 +18,6 @@ func _ready() -> void:
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	connect_external_inventory_signal()
 
-#func _process(delta: float) -> void:
-	#connect_external_inventory_signal()
 
 func connect_external_inventory_signal() -> void:
 	for node in get_tree().get_nodes_in_group("external_inventory"):
@@ -52,7 +51,7 @@ func _on_chest_broke(external_inventory_owner,pos) -> void:
 			var variant = pow(-1.0,rep_count)*rep_count * 3
 			slot.global_position = Vector2((pos.x + variant), pos.y+5)
 			add_child(slot)
-			print(slot.global_position)
+			#print(slot.global_position)
 			rep_count+=1
 		if !item:
 			continue
@@ -63,7 +62,7 @@ func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
 	pick_up.slot_data = slot_data
 	if pick_up.slot_data.item_data is ItemDataChest:
 		var chest = Chest.instantiate()
-		chest.global_position = position_in_radius()
+		chest.global_position = chest_place_on_grid()
 		add_child(chest)
 		connect_external_inventory_signal()
 	else:
@@ -72,7 +71,7 @@ func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
 
 ##calculate drop position
 func position_in_radius() -> Vector2:
-	var radius = 30
+	var radius = 20
 	var mouse_pos = get_global_mouse_position()
 	var direction_vector = mouse_pos - player.global_position
 	var normal_dir = direction_vector.normalized()
@@ -85,4 +84,31 @@ func position_in_radius() -> Vector2:
 		return mouse_pos
 	else:
 		return return_position
+
+func chest_place_on_grid():
+	var mouse_position = ground_tilemap_layer.get_local_mouse_position()
+	var cell_position = ground_tilemap_layer.local_to_map(mouse_position)
+	var cell_source_id = ground_tilemap_layer.get_cell_source_id(cell_position)
+	var local_cell_position = ground_tilemap_layer.map_to_local(cell_position)
 	
+	var player_on_grid = return_in_grid(player.global_position)
+	
+	var radius = 20
+	var direction_vector = local_cell_position - player_on_grid
+	var normal_dir = direction_vector.normalized()
+	var return_position = player_on_grid + (normal_dir * radius)
+	var dis = normal_dir * radius
+	var distance = dis.length()
+	
+	if direction_vector.length() <= distance and cell_source_id != -1:
+		return local_cell_position
+	elif direction_vector.length() > distance and cell_source_id != -1:
+		var return_on_grid = return_in_grid(return_position)
+		return return_on_grid
+	else:
+		return
+
+func return_in_grid(location: Vector2) -> Vector2:
+	var cell_position = ground_tilemap_layer.local_to_map(location)
+	var local_cell_position = ground_tilemap_layer.map_to_local(cell_position)
+	return local_cell_position
