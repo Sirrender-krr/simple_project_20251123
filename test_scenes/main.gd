@@ -85,7 +85,8 @@ func position_in_radius() -> Vector2:
 	else:
 		return return_position
 
-func chest_place_on_grid():
+
+func chest_place_on_grid() -> Vector2:
 	var mouse_position = ground_tilemap_layer.get_local_mouse_position()
 	var cell_position = ground_tilemap_layer.local_to_map(mouse_position)
 	var cell_source_id = ground_tilemap_layer.get_cell_source_id(cell_position)
@@ -106,7 +107,7 @@ func chest_place_on_grid():
 		var return_on_grid = return_in_grid(return_position)
 		return return_on_grid
 	else:
-		return
+		return player_on_grid
 
 func return_in_grid(location: Vector2) -> Vector2:
 	var cell_position = ground_tilemap_layer.local_to_map(location)
