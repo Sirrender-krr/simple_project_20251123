@@ -17,10 +17,13 @@ func _ready() -> void:
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	connect_external_inventory_signal()
 
+#func _process(delta: float) -> void:
+	#connect_external_inventory_signal()
 
 func connect_external_inventory_signal() -> void:
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_interface)
+		node.chest_broke.connect(_on_chest_broke)
 
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	inventory_interface.visible = not inventory_interface.visible
@@ -37,6 +40,23 @@ func toggle_inventory_interface(external_inventory_owner = null) -> void:
 		inventory_interface.set_external_inventory(external_inventory_owner)
 	else:
 		inventory_interface.clear_external_inventory()
+
+##items in chest drop
+func _on_chest_broke(external_inventory_owner,pos) -> void:
+	var chest_inv = external_inventory_owner.inventory_data
+	var rep_count = 0
+	for item in chest_inv.slot_datas:
+		var slot = PickUp.instantiate().duplicate()
+		if item:
+			slot.slot_data = item
+			var variant = pow(-1.0,rep_count)*rep_count * 3
+			slot.global_position = Vector2((pos.x + variant), pos.y+5)
+			add_child(slot)
+			print(slot.global_position)
+			rep_count+=1
+		if !item:
+			continue
+		
 
 func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
 	var pick_up = PickUp.instantiate()

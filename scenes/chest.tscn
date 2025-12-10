@@ -67,8 +67,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg5gm"]
 size = Vector2(16, 7)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8me8i"]
-radius = 23.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8me8i"]
+size = Vector2(18, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w02o5"]
 size = Vector2(16, 8)
@@ -78,7 +78,7 @@ collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_sy5e1")
 chest_icon = SubResource("Resource_lfymr")
-inventory_data = ExtResource("2_gqd3d")
+inv_data = ExtResource("2_gqd3d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_yhylo")
@@ -93,8 +93,8 @@ shape = SubResource("RectangleShape2D_kg5gm")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_8me8i")
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_8me8i")
 debug_color = Color(0.276823, 0.622764, 0.312934, 0.42)
 
 [node name="HurtComponent" parent="." instance=ExtResource("5_yhylo")]
