@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal toggle_inventory
+signal tilling
 
 #region player control var
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -113,19 +114,27 @@ func _unhandled_input(event: InputEvent) -> void:
 			if tools == Tools.hoe:
 				if direction == dir.down:
 					animated_sprite.play("hoe_down")
-					await get_tree().create_timer(.5).timeout
+					await get_tree().create_timer(.25).timeout
+					tilling.emit()
+					await get_tree().create_timer(.25).timeout
 					state = State.idle
 				elif direction == dir.up:
 					animated_sprite.play("hoe_up")
-					await get_tree().create_timer(.5).timeout
+					await get_tree().create_timer(.25).timeout
+					tilling.emit()
+					await get_tree().create_timer(.25).timeout
 					state = State.idle
 				elif direction == dir.left:
 					animated_sprite.play("hoe_left")
-					await get_tree().create_timer(.5).timeout
+					await get_tree().create_timer(.25).timeout
+					tilling.emit()
+					await get_tree().create_timer(.25).timeout
 					state = State.idle
 				elif direction == dir.right:
 					animated_sprite.play("hoe_right")
-					await get_tree().create_timer(.5).timeout
+					await get_tree().create_timer(.25).timeout
+					tilling.emit()
+					await get_tree().create_timer(.25).timeout
 					state = State.idle
 			if tools == Tools.axe:
 				if direction == dir.down:
