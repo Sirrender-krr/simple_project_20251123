@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cs5m2c6u266ps"]
+
+[ext_resource type="Texture2D" uid="uid://cyh68ps388f02" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Water.png" id="1_120tk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_od76c"]
+texture = ExtResource("1_120tk")
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.2
+0:0/animation_frame_2/duration = 0.2
+0:0/animation_frame_3/duration = 0.2
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_od76c")
