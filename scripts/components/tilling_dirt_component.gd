@@ -48,6 +48,8 @@ func add_tilled_dirt_cell() -> void:
 	
 	if distance <= player_radius and player.tools == 1 and cell_source_id != -1:
 		tilled_dirt_tilemap_layer.set_cells_terrain_connect(tilled_pos,tilled_dirt_terrain_set,tilled_dirt_terrain)
+	elif distance > player_radius and player.tools == 1 and cell_source_id != -1:
+		tilled_dirt_tilemap_layer.set_cells_terrain_connect(tilled_pos,tilled_dirt_terrain_set,tilled_dirt_terrain)
 
 func remove_tilled_dirt_cell() -> void:
 	direction = player.direction
@@ -56,30 +58,43 @@ func remove_tilled_dirt_cell() -> void:
 	var tilled_pos:Array = []
 	tilled_pos = tilling_dir(player_grid,cell_position)
 	if distance <= player_radius and player.tools == 1 and cell_source_id != -1:
-		print('removing')
+		tilled_dirt_tilemap_layer.set_cells_terrain_connect(tilled_pos,0,-1)
+	elif distance > player_radius and player.tools == 1 and cell_source_id != -1:
 		tilled_dirt_tilemap_layer.set_cells_terrain_connect(tilled_pos,0,-1)
 
 func tilling_dir(player_grid, cell_position) -> Array:
 	var tilled_pos: Array
-	match direction:
-		dir.left:
-			if cell_position.x >player_grid.x:
-				tilled_pos = [Vector2i(player_grid.x,cell_position.y)]
-			else:
-				tilled_pos = [cell_position]
-		dir.right:
-			if cell_position.x < player_grid.x:
-				tilled_pos = [Vector2i(player_grid.x,cell_position.y)]
-			else:
-				tilled_pos = [cell_position]
-		dir.up:
-			if cell_position.y >player_grid.y:
-				tilled_pos = [Vector2i(cell_position.x,player_grid.y)]
-			else:
-				tilled_pos = [cell_position]
-		dir.down:
-			if cell_position.y <player_grid.y:
-				tilled_pos = [Vector2i(cell_position.x,player_grid.y)]
-			else:
-				tilled_pos = [cell_position]
-	return tilled_pos
+	if distance > player_radius:
+		match direction:
+			dir.left:
+				tilled_pos = [Vector2i(player_grid.x-1,player_grid.y)]
+			dir.right:
+				tilled_pos = [Vector2i(player_grid.x+1,player_grid.y)]
+			dir.up:
+				tilled_pos = [Vector2i(player_grid.x,player_grid.y-1)]
+			dir.down:
+				tilled_pos = [Vector2i(player_grid.x,player_grid.y+1)]
+		return tilled_pos
+	else:
+		match direction:
+			dir.left:
+				if cell_position.x >player_grid.x:
+					tilled_pos = [Vector2i(player_grid.x,cell_position.y)]
+				else:
+					tilled_pos = [cell_position]
+			dir.right:
+				if cell_position.x < player_grid.x:
+					tilled_pos = [Vector2i(player_grid.x,cell_position.y)]
+				else:
+					tilled_pos = [cell_position]
+			dir.up:
+				if cell_position.y >player_grid.y:
+					tilled_pos = [Vector2i(cell_position.x,player_grid.y)]
+				else:
+					tilled_pos = [cell_position]
+			dir.down:
+				if cell_position.y <player_grid.y:
+					tilled_pos = [Vector2i(cell_position.x,player_grid.y)]
+				else:
+					tilled_pos = [cell_position]
+		return tilled_pos
