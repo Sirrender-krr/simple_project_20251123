@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwqfpgxuj7su7" path="res://scenes/objects/small_tree.tscn" id="1_7c88i"]
 [ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="2_6jkjv"]
-[ext_resource type="Resource" uid="uid://ce360lptchuou" path="res://inventory/item_resources/stone.tres" id="3_xnkle"]
+[ext_resource type="Resource" uid="uid://brnb05xx1pb2o" path="res://inventory/item_resources/stone.tres" id="3_xnkle"]
 [ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="4_1nmxg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xnkle"]
@@ -18,7 +18,7 @@ load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02
 atlas = SubResource("CompressedTexture2D_0cy6w")
 region = Rect2(128, 16, 16, 16)
 
-[sub_resource type="Resource" id="Resource_mldux"]
+[sub_resource type="Resource" id="Resource_xnkle"]
 script = ExtResource("4_1nmxg")
 item_data = ExtResource("3_xnkle")
 quantity = 1
@@ -31,7 +31,7 @@ radius = 6.0
 material = SubResource("ShaderMaterial_xnkle")
 texture = SubResource("AtlasTexture_tvljo")
 offset = Vector2(0, -3)
-log = SubResource("Resource_mldux")
+Log = SubResource("Resource_xnkle")
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(0, -3)

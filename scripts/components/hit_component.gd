@@ -7,5 +7,5 @@ var current_tool#:
 		#print(current_tool)
 @export var hit_damage: int = 1
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	current_tool = get_parent().tools

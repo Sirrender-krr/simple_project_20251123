@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://cpnib5jva0dp8"]
+
+[ext_resource type="Script" uid="uid://bnbdhir5facwy" path="res://scenes/objects/under_growth/under_growth.gd" id="1_ofj7k"]
+[ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="2_mljdf"]
+[ext_resource type="PackedScene" uid="uid://chy7p282ruvhj" path="res://scripts/components/hurt_component.tscn" id="3_hkbya"]
+[ext_resource type="PackedScene" uid="uid://cl68koa38c3gq" path="res://scripts/components/damage_component.tscn" id="4_3xc7a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybfi7"]
+radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybfi7"]
+resource_local_to_scene = true
+shader = ExtResource("2_mljdf")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l1iyy"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li5tx"]
+atlas = SubResource("CompressedTexture2D_l1iyy")
+region = Rect2(144, 0, 8, 8)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ymekm"]
+particle_flag_disable_z = true
+angular_velocity_min = 180.0
+angular_velocity_max = 180.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+gravity = Vector3(0, -100, 0)
+scale_min = 2.0
+scale_max = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mrtho"]
+radius = 8.0
+
+[node name="UnderGrowth" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 18
+script = ExtResource("1_ofj7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_ybfi7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_ybfi7")
+texture = SubResource("AtlasTexture_li5tx")
+offset = Vector2(0, -3)
+
+[node name="destroyed_particle" type="GPUParticles2D" parent="."]
+position = Vector2(0, -3)
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+fixed_fps = 15
+process_material = SubResource("ParticleProcessMaterial_ymekm")
+
+[node name="HurtComponent" parent="." instance=ExtResource("3_hkbya")]
+tools = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_mrtho")
+debug_color = Color(0.819061, 0.366306, 0.454951, 0.42)
+
+[node name="DamageComponent" parent="." instance=ExtResource("4_3xc7a")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

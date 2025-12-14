@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bicxh7j3irydx"]
+
+[ext_resource type="PackedScene" uid="uid://cpnib5jva0dp8" path="res://scenes/objects/over_growth/over_growth.tscn" id="1_cedj0"]
+[ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="2_16jkc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpdkj"]
+resource_local_to_scene = true
+shader = ExtResource("2_16jkc")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_myv6y"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8bxb"]
+atlas = SubResource("CompressedTexture2D_myv6y")
+region = Rect2(80, 48, 16, 16)
+
+[node name="BlueFlower" instance=ExtResource("1_cedj0")]
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_fpdkj")
+texture = SubResource("AtlasTexture_r8bxb")
+
+[node name="destroyed_particle" parent="." index="2"]
+position = Vector2(0, -5)

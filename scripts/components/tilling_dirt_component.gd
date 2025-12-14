@@ -62,7 +62,7 @@ func remove_tilled_dirt_cell() -> void:
 	elif distance > player_radius and player.tools == 1 and cell_source_id != -1:
 		tilled_dirt_tilemap_layer.set_cells_terrain_connect(tilled_pos,0,-1)
 
-func tilling_dir(player_grid, cell_position) -> Array:
+func tilling_dir(player_grid, position) -> Array:
 	var tilled_pos: Array
 	if distance > player_radius:
 		match direction:
@@ -78,23 +78,23 @@ func tilling_dir(player_grid, cell_position) -> Array:
 	else:
 		match direction:
 			dir.left:
-				if cell_position.x >player_grid.x:
-					tilled_pos = [Vector2i(player_grid.x,cell_position.y)]
+				if position.x >player_grid.x:
+					tilled_pos = [Vector2i(player_grid.x,position.y)]
 				else:
-					tilled_pos = [cell_position]
+					tilled_pos = [position]
 			dir.right:
-				if cell_position.x < player_grid.x:
-					tilled_pos = [Vector2i(player_grid.x,cell_position.y)]
+				if position.x < player_grid.x:
+					tilled_pos = [Vector2i(player_grid.x,position.y)]
 				else:
-					tilled_pos = [cell_position]
+					tilled_pos = [position]
 			dir.up:
-				if cell_position.y >player_grid.y:
-					tilled_pos = [Vector2i(cell_position.x,player_grid.y)]
+				if position.y >player_grid.y:
+					tilled_pos = [Vector2i(position.x,player_grid.y)]
 				else:
-					tilled_pos = [cell_position]
+					tilled_pos = [position]
 			dir.down:
-				if cell_position.y <player_grid.y:
-					tilled_pos = [Vector2i(cell_position.x,player_grid.y)]
+				if position.y <player_grid.y:
+					tilled_pos = [Vector2i(position.x,player_grid.y)]
 				else:
-					tilled_pos = [cell_position]
+					tilled_pos = [position]
 		return tilled_pos

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6jrj63bcacxk"]
+
+[ext_resource type="PackedScene" uid="uid://crynmb6ac7wom" path="res://scenes/objects/under_growth/under_growth.tscn" id="1_528qw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_528qw"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eq0b"]
+atlas = SubResource("CompressedTexture2D_528qw")
+region = Rect2(80, 0, 16, 16)
+
+[node name="TwoMushrooms" instance=ExtResource("1_528qw")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_2eq0b")

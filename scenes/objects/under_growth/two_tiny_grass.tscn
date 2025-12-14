@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://fs8t15au221l"]
+
+[ext_resource type="PackedScene" uid="uid://crynmb6ac7wom" path="res://scenes/objects/under_growth/under_growth.tscn" id="1_ndk8d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_527ed"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aux5l"]
+atlas = SubResource("CompressedTexture2D_527ed")
+region = Rect2(96, 16, 16, 16)
+
+[node name="TwoTinyGrass" instance=ExtResource("1_ndk8d")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_aux5l")

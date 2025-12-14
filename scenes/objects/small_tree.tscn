@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwqfpgxuj7su7"]
+[gd_scene load_steps=14 format=3 uid="uid://bwqfpgxuj7su7"]
 
 [ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="1_bci37"]
 [ext_resource type="Script" uid="uid://c6spdc4rf1wp4" path="res://scenes/objects/small_tree.gd" id="2_4fdwj"]
@@ -20,7 +20,7 @@ load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02
 atlas = SubResource("CompressedTexture2D_bci37")
 region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="Resource" id="Resource_bstq3"]
+[sub_resource type="Resource" id="Resource_bci37"]
 script = ExtResource("5_vqt1i")
 item_data = ExtResource("3_moii5")
 quantity = 1
@@ -32,13 +32,30 @@ radius = 5.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67mvu"]
 size = Vector2(6, 7)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bci37"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -4, 0)
+angular_velocity_min = 180.0
+angular_velocity_max = 180.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, -100, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 66.66
+radial_accel_min = -2.23517e-06
+radial_accel_max = 21.68
+scale_min = 3.0
+scale_max = 3.0
+
 [node name="SmallTree" type="Sprite2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_vqt1i")
 texture = SubResource("AtlasTexture_vqt1i")
 offset = Vector2(0, -10)
 script = ExtResource("2_4fdwj")
-log = SubResource("Resource_bstq3")
+Log = SubResource("Resource_bci37")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -56,3 +73,10 @@ debug_color = Color(0.846225, 0.333917, 0.464072, 0.42)
 
 [node name="DamageComponent" parent="." instance=ExtResource("3_67mvu")]
 max_damage = 3
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_bci37")

@@ -11,6 +11,7 @@ signal inv_show(inv_visible: bool)
 @onready var inventory_interface: Control = $CanvasLayer/InventoryInterface
 @onready var hot_bar_inventory: PanelContainer = $CanvasLayer/HotBarInventory
 
+
 func _ready() -> void:
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	inventory_interface.set_player_inventory_data(player.inventory_data)

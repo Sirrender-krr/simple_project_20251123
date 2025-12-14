@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://u45ovy52vap0"]
+
+[ext_resource type="PackedScene" uid="uid://cpnib5jva0dp8" path="res://scenes/objects/over_growth/over_growth.tscn" id="1_qhwo5"]
+[ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="2_rg2i5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p138j"]
+resource_local_to_scene = true
+shader = ExtResource("2_rg2i5")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8gf0b"]
+load_path = "res://.godot/imported/Basic_Grass_Biom_things.png-623a3663c6b08eb02eb67d87420be13a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11yuw"]
+atlas = SubResource("CompressedTexture2D_8gf0b")
+region = Rect2(80, 0, 16, 16)
+
+[node name="TwoMushrooms" instance=ExtResource("1_qhwo5")]
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_p138j")
+texture = SubResource("AtlasTexture_11yuw")
