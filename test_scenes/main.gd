@@ -11,13 +11,14 @@ signal inv_show(inv_visible: bool)
 @onready var inventory_interface: Control = $CanvasLayer/InventoryInterface
 @onready var hot_bar_inventory: PanelContainer = $CanvasLayer/HotBarInventory
 
-
 func _ready() -> void:
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
 	inventory_interface.drop_slot_data.connect(_on_inventory_interface_drop_slot_data)
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	connect_external_inventory_signal()
+	
+	PlacingManager.ground_tile = ground_tilemap_layer
 
 
 func connect_external_inventory_signal() -> void:
@@ -49,7 +50,7 @@ func _on_chest_broke(external_inventory_owner,pos) -> void:
 		var slot = PickUp.instantiate().duplicate()
 		if item:
 			slot.slot_data = item
-			var variant = pow(-1.0,rep_count)*rep_count * 3
+			var variant = pow(-1.0,rep_count)*rep_count * 3 #-1^n*n*3
 			slot.global_position = Vector2((pos.x + variant), pos.y+5)
 			add_child(slot)
 			#print(slot.global_position)

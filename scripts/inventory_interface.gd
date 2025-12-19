@@ -60,16 +60,31 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton\
 	and event.is_pressed()\
 	and grabbed_slot_data:
-		
-		match event.button_index:
-			MOUSE_BUTTON_LEFT:
-				drop_slot_data.emit(grabbed_slot_data)
-				grabbed_slot_data = null
-			MOUSE_BUTTON_RIGHT:
-				drop_slot_data.emit(grabbed_slot_data.create_single_slot_data())
-				if grabbed_slot_data.quantity < 1:
+		if grabbed_slot_data.item_data is ItemDataChest:
+			var mouse_pos = get_parent().get_parent().position_in_radius()
+			if PlacingManager.is_tile_occupied(mouse_pos):
+				pass
+			else:
+				PlacingManager.attemp_placement(mouse_pos)
+				match event.button_index:
+					MOUSE_BUTTON_LEFT:
+						drop_slot_data.emit(grabbed_slot_data)
+						grabbed_slot_data = null
+					MOUSE_BUTTON_RIGHT:
+						drop_slot_data.emit(grabbed_slot_data.create_single_slot_data())
+						if grabbed_slot_data.quantity < 1:
+							grabbed_slot_data = null
+				update_grabbed_slot()
+		else:
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					drop_slot_data.emit(grabbed_slot_data)
 					grabbed_slot_data = null
-		update_grabbed_slot()
+				MOUSE_BUTTON_RIGHT:
+					drop_slot_data.emit(grabbed_slot_data.create_single_slot_data())
+					if grabbed_slot_data.quantity < 1:
+						grabbed_slot_data = null
+			update_grabbed_slot()
 
 func _on_visibility_changed() -> void:
 	if not visible and grabbed_slot_data:

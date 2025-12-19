@@ -17,6 +17,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 PlayerManager="*res://scripts/auto_load/player_manager.gd"
+PlacingManager="*res://scripts/auto_load/placing_manager.gd"
 
 [display]
 

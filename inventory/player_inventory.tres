@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dncgayh5t1qfq" path="res://inventory/inventory_data.gd" id="1_fge2b"]
 [ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="2_x0x00"]
-[ext_resource type="Resource" uid="uid://dbrlo84r2h81l" path="res://inventory/item_resources/milk.tres" id="3_65xq6"]
 [ext_resource type="Resource" uid="uid://crvjaqgjpmjm6" path="res://inventory/item_resources/corn.tres" id="3_e8alh"]
 [ext_resource type="Resource" uid="uid://cwr62tra13d0o" path="res://inventory/item_resources/hoe.tres" id="4_kujve"]
 [ext_resource type="Resource" uid="uid://cx3jifhriq8nm" path="res://inventory/item_resources/chest.tres" id="4_pu72b"]
@@ -21,6 +20,18 @@ item_data = ExtResource("4_pu72b")
 quantity = 1
 metadata/_custom_type_script = "uid://c5cprt1l0e75w"
 
+[sub_resource type="Resource" id="Resource_pu72b"]
+script = ExtResource("2_x0x00")
+item_data = ExtResource("4_pu72b")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
+[sub_resource type="Resource" id="Resource_x0djo"]
+script = ExtResource("2_x0x00")
+item_data = ExtResource("4_pu72b")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
 [sub_resource type="Resource" id="Resource_1vmji"]
 script = ExtResource("2_x0x00")
 item_data = ExtResource("3_e8alh")
@@ -33,12 +44,6 @@ item_data = ExtResource("4_kujve")
 quantity = 1
 metadata/_custom_type_script = "uid://c5cprt1l0e75w"
 
-[sub_resource type="Resource" id="Resource_rfny4"]
-script = ExtResource("2_x0x00")
-item_data = ExtResource("3_65xq6")
-quantity = 6
-metadata/_custom_type_script = "uid://c5cprt1l0e75w"
-
 [sub_resource type="Resource" id="Resource_7fytk"]
 script = ExtResource("2_x0x00")
 item_data = ExtResource("6_pu72b")
@@ -47,5 +52,5 @@ metadata/_custom_type_script = "uid://c5cprt1l0e75w"
 
 [resource]
 script = ExtResource("1_fge2b")
-slot_datas = Array[ExtResource("2_x0x00")]([SubResource("Resource_rdqbr"), SubResource("Resource_3luym"), null, null, SubResource("Resource_1vmji"), SubResource("Resource_cajua"), SubResource("Resource_rfny4"), SubResource("Resource_7fytk")])
+slot_datas = Array[ExtResource("2_x0x00")]([SubResource("Resource_rdqbr"), SubResource("Resource_3luym"), SubResource("Resource_pu72b"), SubResource("Resource_x0djo"), SubResource("Resource_1vmji"), SubResource("Resource_cajua"), null, SubResource("Resource_7fytk")])
 metadata/_custom_type_script = "uid://dncgayh5t1qfq"

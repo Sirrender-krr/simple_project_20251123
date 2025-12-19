@@ -75,7 +75,7 @@ size = Vector2(16, 8)
 
 [node name="Chest" type="StaticBody2D" groups=["external_inventory"]]
 collision_layer = 8
-collision_mask = 10
+collision_mask = 0
 script = ExtResource("1_sy5e1")
 chest_icon = SubResource("Resource_lfymr")
 inv_data = ExtResource("2_gqd3d")
