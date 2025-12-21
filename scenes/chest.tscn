@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dx1ed0nbeqx33"]
+[gd_scene load_steps=21 format=3 uid="uid://dx1ed0nbeqx33"]
 
 [ext_resource type="Texture2D" uid="uid://qd5rav2o024x" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Chest.png" id="1_oii8l"]
 [ext_resource type="Script" uid="uid://dsxh17s48e54n" path="res://scenes/chest.gd" id="1_sy5e1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cx3jifhriq8nm" path="res://inventory/item_resources/chest.tres" id="2_kg5gm"]
 [ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="3_8me8i"]
 [ext_resource type="Shader" uid="uid://dvp03hbjxipj6" path="res://scenes/objects/shake.gdshader" id="3_yue2o"]
+[ext_resource type="Texture2D" uid="uid://job1agqhtmt" path="res://assets/shadow.png" id="5_8me8i"]
 [ext_resource type="PackedScene" uid="uid://chy7p282ruvhj" path="res://scripts/components/hurt_component.tscn" id="5_yhylo"]
 [ext_resource type="PackedScene" uid="uid://cl68koa38c3gq" path="res://scripts/components/damage_component.tscn" id="6_w02o5"]
 
@@ -79,6 +80,11 @@ collision_mask = 0
 script = ExtResource("1_sy5e1")
 chest_icon = SubResource("Resource_lfymr")
 inv_data = ExtResource("2_gqd3d")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(1.14286, 1)
+texture = ExtResource("5_8me8i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_yhylo")

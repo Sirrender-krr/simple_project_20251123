@@ -15,6 +15,8 @@ var PickUp = preload("res://inventory/Pickups/pickup.tscn")
 func _ready() -> void:
 	hurt_component.hurt.connect(on_hurt)
 	damage_component.max_damaged_reached.connect(on_max_damage_reached)
+	var tree_coord = global_position
+	PlacingManager.attemp_placement(tree_coord) #register on map grid to prevent overlap placement
 
 
 func on_hurt(hit_damage: int) -> void:

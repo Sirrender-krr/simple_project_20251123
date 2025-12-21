@@ -83,6 +83,8 @@ func on_hurt(damage:int) -> void:
 
 func on_max_damage() -> void:
 	call_deferred('add_chest_pickup')
+	var chest_coord = global_position
+	PlacingManager.remove_placeable(chest_coord)
 	queue_free()
 
 func add_chest_pickup() -> void:
