@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7ejr0yg7firy"]
+
+[ext_resource type="Script" uid="uid://des7bshbt2r0n" path="res://scenes/objects/corn.gd" id="1_ulegu"]
+[ext_resource type="Texture2D" uid="uid://cncg8ia84dit7" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Basic_Plants.png" id="1_whpf8"]
+[ext_resource type="Resource" uid="uid://crvjaqgjpmjm6" path="res://inventory/item_resources/corn.tres" id="2_ckgas"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="3_ckgas"]
+[ext_resource type="PackedScene" uid="uid://chy7p282ruvhj" path="res://scripts/components/hurt_component.tscn" id="4_ujt58"]
+
+[sub_resource type="Resource" id="Resource_ujt58"]
+script = ExtResource("3_ckgas")
+item_data = ExtResource("2_ckgas")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_whpf8"]
+particle_flag_disable_z = true
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+gravity = Vector3(0, -20, 0)
+color = Color(0.341176, 1, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mqdxn"]
+particle_flag_disable_z = true
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+gravity = Vector3(0, -98, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6yoy"]
+size = Vector2(15, 10)
+
+[node name="Corn" type="Node2D"]
+script = ExtResource("1_ulegu")
+harvest_resource = SubResource("Resource_ujt58")
+growth_interval = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_whpf8")
+offset = Vector2(0, -4)
+hframes = 6
+vframes = 2
+frame = 1
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="WateringParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_whpf8")
+
+[node name="FloweringParticle" type="GPUParticles2D" parent="."]
+amount = 6
+lifetime = 0.6
+speed_scale = 0.4
+explosiveness = 0.5
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_mqdxn")
+
+[node name="HurtComponent" parent="." instance=ExtResource("4_ujt58")]
+tools = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_w6yoy")
+
+[node name="growing_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="growing_timer" to="." method="_on_growing_timer_timeout"]
