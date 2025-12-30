@@ -12,7 +12,7 @@ enum Tools {none, hoe, axe, watering_can}
 @export var tools: Tools = Tools.none
 
 const speed: float = 40.0
-const run_speed: float = 100.0
+const run_speed: float = 80.0
 var accel = speed
 
 ##Stamina

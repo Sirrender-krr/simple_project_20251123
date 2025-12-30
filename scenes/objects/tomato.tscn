@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2350lgekv0t2"]
+
+[ext_resource type="PackedScene" uid="uid://b7ejr0yg7firy" path="res://scenes/objects/corn.tscn" id="1_cy3ae"]
+[ext_resource type="Resource" uid="uid://drn8lx5medofm" path="res://inventory/item_resources/tomato.tres" id="2_smv64"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="3_5iwbf"]
+
+[sub_resource type="Resource" id="Resource_1pdk2"]
+script = ExtResource("3_5iwbf")
+item_data = ExtResource("2_smv64")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
+[node name="Tomato" instance=ExtResource("1_cy3ae")]
+harvest_resource = SubResource("Resource_1pdk2")
+harvest_amount = 1
+sprite_offset = 6
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 7

@@ -19,6 +19,7 @@ region = Rect2(80, 48, 16, 16)
 [node name="BlueFlower" instance=ExtResource("1_cedj0")]
 
 [node name="Sprite2D" parent="." index="1"]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_fpdkj")
 texture = SubResource("AtlasTexture_r8bxb")
 
