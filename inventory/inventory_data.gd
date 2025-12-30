@@ -48,6 +48,7 @@ func use_slot_data(index: int) -> void:
 	var slot_data = slot_datas[index]
 	
 	if not slot_data:
+		PlayerManager.empty_hand()
 		return
 	if slot_data.item_data is ItemDataConsumeable:
 		slot_data.quantity -= 1

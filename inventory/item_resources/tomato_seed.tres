@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataSeed" load_steps=5 format=3 uid="uid://c6c41v88koiv2"]
+
+[ext_resource type="PackedScene" uid="uid://b2350lgekv0t2" path="res://scenes/objects/tomato.tscn" id="1_b507t"]
+[ext_resource type="Script" uid="uid://b4urbkidf83pt" path="res://inventory/item_data_seed.gd" id="2_eeliy"]
+[ext_resource type="Texture2D" uid="uid://cncg8ia84dit7" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Basic_Plants.png" id="3_sgjlv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7bwf"]
+atlas = ExtResource("3_sgjlv")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_eeliy")
+scene = ExtResource("1_b507t")
+name = "Tomato Seed"
+description = "A bag of tomato seed, plant it
+and grow a tomato."
+stackable = true
+MAX_STACK_SIZE = 20
+texture = SubResource("AtlasTexture_v7bwf")
+metadata/_custom_type_script = "uid://b4urbkidf83pt"
