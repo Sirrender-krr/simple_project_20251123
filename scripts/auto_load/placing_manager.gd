@@ -1,6 +1,6 @@
 extends Node
 
-signal can_place(tf:bool)
+
 
 var ground_tile: TileMapLayer
 
@@ -26,9 +26,8 @@ func is_tile_occupied(location: Vector2) -> bool:
 func attemp_placement(location:Vector2) -> void:
 	var tile_coord: Vector2i = return_in_grid(location)
 
-	can_place.emit(true)
 	occupied_tiles[tile_coord] = return_center_grid(tile_coord)
-	print("Place successfully at: ", tile_coord)
+	#print("Place successfully at: ", tile_coord)
 
 
 func remove_placeable(location: Vector2) -> void:
@@ -36,7 +35,7 @@ func remove_placeable(location: Vector2) -> void:
 	
 	if occupied_tiles.has(tile_coord):
 		occupied_tiles.erase(tile_coord)
-		print("Tile ",tile_coord," is free")
+		#print("Tile ",tile_coord," is free")
 	else:
 		print("Error: noting to remove here")
 

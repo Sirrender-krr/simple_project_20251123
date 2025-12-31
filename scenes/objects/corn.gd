@@ -82,5 +82,5 @@ func _on_crop_spawn_body_entered(body: Player) -> void:
 			crops.global_position = Vector2((pos.x + variant),pos.y)
 			get_parent().add_child(crops)
 			rep_count +=1
-		PlayerManager.immune.emit()
+		PlacingManager.remove_placeable(pos)
 		queue_free()

@@ -8,7 +8,7 @@ signal tilling
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_spot_collision_shape: CollisionShape2D = $HitComponent/HitSpotCollisionShape
 
-enum Tools {none, hoe, axe, watering_can}
+enum Tools {none, hoe, axe, watering_can, seed}
 @export var tools: Tools = Tools.none
 
 const speed: float = 40.0
@@ -28,6 +28,9 @@ var state = State.idle#:
 		#print(State.find_key(state))
 #endregion
 #region inventory var
+#region
+var seed_in_hand: PackedScene
+#endregion
 @export var inventory_data: InventoryData
 var interacting
 
@@ -108,7 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		if can_work():
 			state = State.work
-			if tools == Tools.none:
+			if tools == Tools.none or tools == Tools.seed:
 				state = State.idle
 				return
 			if tools == Tools.hoe:
