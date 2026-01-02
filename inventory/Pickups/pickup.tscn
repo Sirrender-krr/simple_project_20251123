@@ -12,7 +12,7 @@ region = Rect2(115, 18, 8, 7)
 atlas = SubResource("AtlasTexture_clysi")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndhiy"]
-radius = 5.0
+radius = 16.2788
 
 [sub_resource type="Animation" id="Animation_6mrov"]
 length = 0.001

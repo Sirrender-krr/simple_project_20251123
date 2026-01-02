@@ -37,6 +37,7 @@ func clear_external_inventory() -> void:
 		external_inventory.hide()
 		external_inventory_owner = null
 
+#a function to do inside Inventory Tab
 func on_inventory_interact(inventory_data: InventoryData, index: int, button: int) -> void:
 	match [grabbed_slot_data, button]:
 		[null,MOUSE_BUTTON_LEFT]:

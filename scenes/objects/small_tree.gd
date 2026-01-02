@@ -34,6 +34,7 @@ func on_max_damage_reached() -> void:
 	collision_shape_2d.queue_free()
 	particles.emitting = true
 	await get_tree().create_timer(0.5).timeout
+	PlacingManager.remove_placeable(global_position)
 	queue_free()
 
 func add_log_scene() -> void:

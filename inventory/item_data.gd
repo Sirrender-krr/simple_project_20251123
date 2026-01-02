@@ -8,4 +8,4 @@ class_name ItemData
 @export var texture: AtlasTexture
 
 func use(target) -> void:
-	target.tools = target.Tools.none
+	target.tools = target.Tools.none #for to empty player's hand

@@ -22,6 +22,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		selected_hotbar_index = event.keycode - KEY_1
 		
 
+#highlight the pressed hot bar index
 func _draw() -> void:
 	if can_draw == true:
 		draw_rect(Rect2(h_box_container.get_child(selected_hotbar_index).global_position, h_box_container.get_child(selected_hotbar_index).size), Color.WHITE,false)
