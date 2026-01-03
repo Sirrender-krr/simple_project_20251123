@@ -45,9 +45,12 @@ func planting_crop() -> void:
 		var plant_crop = player.seed_in_hand.instantiate() as Node2D
 		#var plant_crop = Corn.instantiate() as Node2D
 		plant_crop.global_position = plant_pos
-		if !PlacingManager.is_tile_occupied(plant_crop.global_position):
+		# check if tile is not occupied and seed pack is not null
+		if !PlacingManager.is_tile_occupied(plant_crop.global_position) and player.inventory_data.slot_datas[PlayerManager.current_hot_bar_index] != null:
 			get_parent().add_child(plant_crop)
 			PlacingManager.attemp_placement(plant_crop.global_position)
+			player.inventory_data.use_slot_data_in_hand(PlayerManager.current_hot_bar_index)
+			
 		else:
 			pass
 		
@@ -55,9 +58,11 @@ func planting_crop() -> void:
 		var plant_crop = player.seed_in_hand.instantiate() as Node2D
 		#var plant_crop = Corn.instantiate() as Node2D
 		plant_crop.global_position = plant_pos
-		if !PlacingManager.is_tile_occupied(plant_crop.global_position):
+		# check if tile is not occupied and seed pack is not null
+		if !PlacingManager.is_tile_occupied(plant_crop.global_position) and player.inventory_data.slot_datas[PlayerManager.current_hot_bar_index] != null:
 			get_parent().add_child(plant_crop)
 			PlacingManager.attemp_placement(plant_crop.global_position)
+			player.inventory_data.use_slot_data_in_hand(PlayerManager.current_hot_bar_index)
 		else:
 			pass
 

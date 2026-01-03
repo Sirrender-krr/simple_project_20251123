@@ -20,6 +20,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if range(KEY_1,KEY_5).has(event.keycode):
 		hot_bar_use.emit(event.keycode - KEY_1)
 		selected_hotbar_index = event.keycode - KEY_1
+		PlayerManager.current_hot_bar_index = selected_hotbar_index
 		
 
 #highlight the pressed hot bar index
