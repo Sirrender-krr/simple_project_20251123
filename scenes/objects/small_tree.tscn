@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cl68koa38c3gq" path="res://scripts/components/damage_component.tscn" id="3_67mvu"]
 [ext_resource type="Resource" uid="uid://c1n5kxep4gd77" path="res://inventory/item_resources/log.tres" id="3_moii5"]
 [ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="5_vqt1i"]
+[ext_resource type="PackedScene" uid="uid://c0si2wq0bilkl" path="res://scripts/components/drop_particle_component.tscn" id="7_vqt1i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vqt1i"]
 resource_local_to_scene = true
@@ -32,23 +33,6 @@ radius = 5.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67mvu"]
 size = Vector2(6, 7)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bci37"]
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, -4, 0)
-angular_velocity_min = 180.0
-angular_velocity_max = 180.0
-orbit_velocity_min = -1.0
-orbit_velocity_max = 1.0
-radial_velocity_min = -2.23517e-05
-radial_velocity_max = -2.23517e-05
-gravity = Vector3(0, -100, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 66.66
-radial_accel_min = -2.23517e-06
-radial_accel_max = 21.68
-scale_min = 3.0
-scale_max = 3.0
-
 [node name="SmallTree" type="Sprite2D"]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_vqt1i")
@@ -74,9 +58,4 @@ debug_color = Color(0.846225, 0.333917, 0.464072, 0.42)
 [node name="DamageComponent" parent="." instance=ExtResource("3_67mvu")]
 max_damage = 3
 
-[node name="Particles" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 4
-lifetime = 0.5
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_bci37")
+[node name="DropParticleComponent" parent="." instance=ExtResource("7_vqt1i")]

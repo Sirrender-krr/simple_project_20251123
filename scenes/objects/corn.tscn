@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7ejr0yg7firy"]
+[gd_scene load_steps=13 format=3 uid="uid://b7ejr0yg7firy"]
 
 [ext_resource type="Script" uid="uid://des7bshbt2r0n" path="res://scenes/objects/corn.gd" id="1_ulegu"]
 [ext_resource type="Texture2D" uid="uid://cncg8ia84dit7" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Basic_Plants.png" id="1_whpf8"]
 [ext_resource type="Resource" uid="uid://crvjaqgjpmjm6" path="res://inventory/item_resources/corn.tres" id="2_ckgas"]
 [ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="3_ckgas"]
 [ext_resource type="PackedScene" uid="uid://chy7p282ruvhj" path="res://scripts/components/hurt_component.tscn" id="4_ujt58"]
+[ext_resource type="PackedScene" uid="uid://c0si2wq0bilkl" path="res://scripts/components/drop_particle_component.tscn" id="6_ujt58"]
 
 [sub_resource type="Resource" id="Resource_ujt58"]
 script = ExtResource("3_ckgas")
@@ -34,6 +35,9 @@ size = Vector2(15, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckgas"]
 size = Vector2(19, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujt58"]
+size = Vector2(15, 11)
 
 [node name="Corn" type="Node2D"]
 script = ExtResource("1_ulegu")
@@ -81,7 +85,17 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CropSpawn"]
 position = Vector2(0.5, -6)
 shape = SubResource("RectangleShape2D_ckgas")
-debug_color = Color(0.850604, 0.342109, 0.394903, 0.42)
+debug_color = Color(0.238535, 0.589729, 0.665039, 0.42)
+
+[node name="HurtComponentAxe" parent="." instance=ExtResource("4_ujt58")]
+tools = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponentAxe"]
+position = Vector2(0.5, -2.5)
+shape = SubResource("RectangleShape2D_ujt58")
+debug_color = Color(0.895941, 0.284603, 0.37288, 0.42)
+
+[node name="DropParticleComponent" parent="." instance=ExtResource("6_ujt58")]
 
 [connection signal="timeout" from="growing_timer" to="." method="_on_growing_timer_timeout"]
 [connection signal="body_entered" from="CropSpawn" to="." method="_on_crop_spawn_body_entered"]

@@ -13,6 +13,8 @@ var Pickup = preload("res://inventory/Pickups/pickup.tscn")
 @onready var hurt_component: HurtComponent = $HurtComponent
 @onready var growing_timer: Timer = $growing_timer
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var hurt_component_axe: HurtComponent = $HurtComponentAxe
+@onready var drop_particle_component: GPUParticles2D = $DropParticleComponent
 
 var is_watered: bool= false:
 	set(tf):
@@ -40,6 +42,8 @@ func _ready() -> void:
 	flowering_particle.emitting = false
 	growing_timer.wait_time = growth_interval
 	hurt_component.hurt.connect(on_hurt)
+	hurt_component_axe.hurt.connect(remove_crop)
+	drop_particle_component.emitting = false
 
 
 func on_hurt(_hit_damage:int) -> void:
@@ -52,6 +56,13 @@ func on_hurt(_hit_damage:int) -> void:
 	else:
 		pass
 
+
+func remove_crop(_hit_hamage:int) -> void:
+	PlacingManager.remove_placeable(global_position)
+	drop_particle_component.emitting = true
+	sprite_2d.texture = null
+	await get_tree().create_timer(1.0).timeout
+	queue_free()
 
 func _on_growing_timer_timeout() -> void:
 	crop_state += 1

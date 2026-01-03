@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0si2wq0bilkl"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bci37"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -4, 0)
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, -100, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 66.66
+radial_accel_min = -2.23517e-06
+radial_accel_max = 21.68
+scale_min = 3.0
+scale_max = 3.0
+
+[node name="DropParticleComponent" type="GPUParticles2D"]
+emitting = false
+amount = 6
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_bci37")

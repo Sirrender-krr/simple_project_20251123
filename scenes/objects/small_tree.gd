@@ -3,7 +3,7 @@ class_name InteractableObject
 
 @onready var hurt_component: HurtComponent = $HurtComponent
 @onready var damage_component: DamageComponent = $DamageComponent
-@onready var particles: GPUParticles2D = $Particles
+@onready var drop_particle_component: GPUParticles2D = $DropParticleComponent
 @onready var collision_shape_2d: CollisionShape2D = $StaticBody2D/CollisionShape2D
 
 
@@ -26,14 +26,14 @@ func on_hurt(hit_damage: int) -> void:
 	material.set_shader_parameter("shake_intensity",0.0)
 
 func enable_particle() -> void:
-	particles.emitting = true
+	drop_particle_component.emitting = true
 
 func on_max_damage_reached() -> void:
 	call_deferred("add_log_scene")
 	texture = null
 	collision_shape_2d.queue_free()
-	particles.emitting = true
-	await get_tree().create_timer(0.5).timeout
+	drop_particle_component.emitting = true
+	await get_tree().create_timer(1.0).timeout
 	PlacingManager.remove_placeable(global_position)
 	queue_free()
 

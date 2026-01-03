@@ -50,21 +50,11 @@ func planting_crop() -> void:
 			get_parent().add_child(plant_crop)
 			PlacingManager.attemp_placement(plant_crop.global_position)
 			player.inventory_data.use_slot_data_in_hand(PlayerManager.current_hot_bar_index)
-			
 		else:
-			pass
+			return
 		
 	elif distance > player_radius and player.tools == 4 and cell_source_id != -1:
-		var plant_crop = player.seed_in_hand.instantiate() as Node2D
-		#var plant_crop = Corn.instantiate() as Node2D
-		plant_crop.global_position = plant_pos
-		# check if tile is not occupied and seed pack is not null
-		if !PlacingManager.is_tile_occupied(plant_crop.global_position) and player.inventory_data.slot_datas[PlayerManager.current_hot_bar_index] != null:
-			get_parent().add_child(plant_crop)
-			PlacingManager.attemp_placement(plant_crop.global_position)
-			player.inventory_data.use_slot_data_in_hand(PlayerManager.current_hot_bar_index)
-		else:
-			pass
+		return
 
 
 #func remove_tilled_dirt_cell() -> void:
@@ -79,41 +69,8 @@ func planting_crop() -> void:
 		#tilled_dirt_tilemap_layer.set_cells_terrain_connect(plant_pos,0,-1)
 
 func planting_dir(player_grid, position) -> Vector2:
-	var plant_pos: Vector2i
-	if distance > player_radius:
-		match direction:
-			dir.left:
-				plant_pos = Vector2i(player_grid.x-1,player_grid.y)
-			dir.right:
-				plant_pos = Vector2i(player_grid.x+1,player_grid.y)
-			dir.up:
-				plant_pos = Vector2i(player_grid.x,player_grid.y-1)
-			dir.down:
-				plant_pos = Vector2i(player_grid.x,player_grid.y+1)
-		return ground_tilemap_layer.map_to_local(plant_pos)
-	else:
-		match direction:
-			dir.left:
-				if position.x >player_grid.x:
-					plant_pos = Vector2i(player_grid.x,position.y)
-				else:
-					plant_pos = position
-			dir.right:
-				if position.x < player_grid.x:
-					plant_pos = Vector2i(player_grid.x,position.y)
-				else:
-					plant_pos = position
-			dir.up:
-				if position.y >player_grid.y:
-					plant_pos = Vector2i(position.x,player_grid.y)
-				else:
-					plant_pos = position
-			dir.down:
-				if position.y <player_grid.y:
-					plant_pos = Vector2i(position.x,player_grid.y)
-				else:
-					plant_pos = position
-		return ground_tilemap_layer.map_to_local(plant_pos)
+	var plant_pos = Vector2i(position)
+	return ground_tilemap_layer.map_to_local(plant_pos)
 
 func to_grid(position:Vector2) -> Vector2:
 	var return_val = ground_tilemap_layer.local_to_map(position)
