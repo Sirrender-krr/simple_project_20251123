@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://b4qyjbt1qu8oh"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://b4qyjbt1qu8oh"]
 
 [ext_resource type="Texture2D" uid="uid://b2rnb6sntcvbl" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Grass.png" id="1_mn7c3"]
 [ext_resource type="Texture2D" uid="uid://q11hebf3qrqe" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Hills.png" id="2_2wjvq"]
 [ext_resource type="Texture2D" uid="uid://drmsmrn3k7u12" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Tilled_Dirt_Wide_v2.png" id="3_a3bhq"]
+[ext_resource type="Texture2D" uid="uid://dtwtdqnpfv6jk" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Wooden_House_Walls_Tilset.png" id="4_2wjvq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wac34"]
 texture = ExtResource("1_mn7c3")
@@ -499,6 +500,10 @@ texture = ExtResource("3_a3bhq")
 8:6/0 = 0
 9:6/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3bhq"]
+texture = ExtResource("4_2wjvq")
+1:1/0 = 0
+
 [resource]
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "grass"
@@ -506,3 +511,4 @@ terrain_set_0/terrain_0/color = Color(0.448847, 0.792052, 0.226931, 1)
 sources/0 = SubResource("TileSetAtlasSource_wac34")
 sources/1 = SubResource("TileSetAtlasSource_7aag7")
 sources/2 = SubResource("TileSetAtlasSource_5k137")
+sources/3 = SubResource("TileSetAtlasSource_a3bhq")
