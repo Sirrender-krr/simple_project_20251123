@@ -143,6 +143,7 @@ sources/0 = SubResource("TileSetAtlasSource_4d2cx")
 size = Vector2(48, 48)
 
 [node name="House" type="Area2D"]
+y_sort_enabled = true
 collision_mask = 2
 script = ExtResource("1_xwfed")
 
@@ -152,19 +153,23 @@ libraries = {
 }
 
 [node name="Ground" type="TileMapLayer" parent="."]
+z_index = -1
 tile_map_data = PackedByteArray("AAD/////AAABAAEAAAAAAP//AAABAAEAAAABAP//AAABAAEAAAD///7/AAABAAEAAAAAAP7/AAABAAEAAAABAP7/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAA=")
 tile_set = SubResource("TileSet_npulx")
 
 [node name="Walls" type="TileMapLayer" parent="."]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD/////AAADAAIAAAABAP//AAADAAIAAAD+//7/AAAAAAEAAAD+////AAAAAAIAAAD+//z/AAAAAAAAAAD+//3/AAAAAAEAAAD///z/AAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAACAAAAAAACAP3/AAACAAEAAAACAP7/AAACAAEAAAACAP//AAACAAIAAAA=")
 tile_set = SubResource("TileSet_fwn47")
 
 [node name="Roof" type="TileMapLayer" parent="."]
+visible = false
 z_index = 1
 tile_map_data = PackedByteArray("AAD+//v/AAAAAAAAAAD+//z/AAAAAAEAAAD+//3/AAAAAAIAAAD+//7/AAAAAAMAAAD+////AAAAAAQAAAACAPv/AAACAAAAAAACAPz/AAACAAEAAAACAP3/AAACAAIAAAACAP7/AAACAAMAAAACAP//AAACAAQAAAD///v/AAABAAAAAAD///z/AAABAAEAAAD///3/AAABAAIAAAD///7/AAABAAMAAAD/////AAABAAQAAAAAAPv/AAABAAAAAAAAAPz/AAABAAEAAAAAAP3/AAABAAIAAAAAAP7/AAABAAMAAAAAAP//AAABAAQAAAABAPv/AAABAAAAAAABAPz/AAABAAEAAAABAP3/AAABAAIAAAABAP7/AAABAAMAAAABAP//AAABAAQAAAA=")
 tile_set = SubResource("TileSet_xu7sq")
 
 [node name="Door" parent="." instance=ExtResource("3_dc2qb")]
+y_sort_enabled = true
 position = Vector2(8, -8)
 
 [node name="HouseCollision" type="CollisionShape2D" parent="."]
