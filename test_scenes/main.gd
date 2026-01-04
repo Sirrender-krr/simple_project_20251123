@@ -60,16 +60,28 @@ func _on_chest_broke(external_inventory_owner,pos) -> void:
 		
 
 func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
-	var pick_up = PickUp.instantiate()
-	pick_up.slot_data = slot_data
+	var pick_up = PickUp.instantiate() as Node2D
+	pick_up.slot_data = slot_data.duplicate()
 	if pick_up.slot_data.item_data is ItemDataChest:
 		var chest = Chest.instantiate()
 		chest.global_position = chest_place_on_grid()
 		add_child(chest)
 		connect_external_inventory_signal()
 	else:
-		pick_up.position = position_in_radius()
-		add_child(pick_up)
+		var rep = 0
+		var qty = slot_data.quantity
+		for item in qty:
+			pick_up = PickUp.instantiate() as Node2D
+			pick_up.slot_data = slot_data.duplicate()
+			pick_up.slot_data.quantity = 1
+			var variant = pow(-1.0, rep) * rep * 1.5
+			pick_up.global_position = position_in_radius()
+			var pos = pick_up.global_position
+			pick_up.global_position = Vector2((pos.x + variant), pos.y)
+			add_child(pick_up)
+			rep +=1
+		#pick_up.position = position_in_radius()
+		#add_child(pick_up)
 
 ##calculate drop position
 func position_in_radius() -> Vector2:
