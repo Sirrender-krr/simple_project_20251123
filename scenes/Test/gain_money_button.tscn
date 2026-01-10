@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2l6nkghpcvnv"]
+
+[ext_resource type="Script" uid="uid://lq7k0b8lh0b" path="res://scenes/Test/gain_money.gd" id="1_mo46g"]
+[ext_resource type="FontFile" uid="uid://b5uaurn0wm7qb" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Fonts/PixelOperator8.ttf" id="2_cywwi"]
+[ext_resource type="Resource" uid="uid://d0ldes55d6av7" path="res://inventory/item_resources/coin.tres" id="2_ync80"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="3_11pmu"]
+
+[sub_resource type="Resource" id="Resource_vkbnc"]
+script = ExtResource("3_11pmu")
+item_data = ExtResource("2_ync80")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_mo46g")
+COIN = SubResource("Resource_vkbnc")
+
+[node name="Gain" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 12)
+offset_left = 256.0
+offset_right = 286.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("2_cywwi")
+theme_override_font_sizes/font_size = 8
+text = "gain"
+
+[node name="loss" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 12)
+offset_left = 288.0
+offset_right = 318.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("2_cywwi")
+theme_override_font_sizes/font_size = 8
+text = "loss"
+
+[connection signal="pressed" from="Gain" to="." method="_on_gain_pressed"]
+[connection signal="pressed" from="loss" to="." method="_on_loss_pressed"]
