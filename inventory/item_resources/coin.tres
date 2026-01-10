@@ -13,5 +13,7 @@ name = "Coin(s)"
 description = "A value hoding item."
 stackable = true
 MAX_STACK_SIZE = 999999999
+buy = 1
+sell = 1
 texture = SubResource("AtlasTexture_etoou")
 metadata/_custom_type_script = "uid://dd8cg5dxhybyt"

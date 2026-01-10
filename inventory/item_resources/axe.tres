@@ -15,5 +15,7 @@ description = "A tool for chopping
 a tree into log(s)"
 stackable = false
 MAX_STACK_SIZE = 1
+buy = 100
+sell = 20
 texture = SubResource("AtlasTexture_3lc7o")
 metadata/_custom_type_script = "uid://w267yyilin7"

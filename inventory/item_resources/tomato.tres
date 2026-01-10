@@ -13,5 +13,7 @@ name = "Tomato"
 description = "A sweet mixed with sour fruit."
 stackable = true
 MAX_STACK_SIZE = 20
+buy = 80
+sell = 40
 texture = SubResource("AtlasTexture_qdrt2")
 metadata/_custom_type_script = "uid://du4i2aawy5pmh"

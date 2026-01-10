@@ -5,6 +5,8 @@ class_name ItemData
 @export_multiline var description: String = ""
 @export var stackable: bool = false
 @export var MAX_STACK_SIZE: int = 1
+@export var buy: int
+@export var sell: int
 @export var texture: AtlasTexture
 
 func use(target) -> void:

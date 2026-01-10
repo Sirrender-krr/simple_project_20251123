@@ -16,5 +16,7 @@ description = "A bag of corn seed, plant it
 and grow corns"
 stackable = true
 MAX_STACK_SIZE = 20
+buy = 20
+sell = 5
 texture = SubResource("AtlasTexture_oyuwe")
 metadata/_custom_type_script = "uid://b4urbkidf83pt"

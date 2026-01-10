@@ -14,5 +14,7 @@ description = "A yellow Vegetable with
 sweet in taste and aroma."
 stackable = true
 MAX_STACK_SIZE = 20
+buy = 10
+sell = 5
 texture = SubResource("AtlasTexture_w5iyc")
 metadata/_custom_type_script = "uid://du4i2aawy5pmh"

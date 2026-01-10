@@ -16,5 +16,7 @@ say it is good for your bones.
 Gain stamina 50 points."
 stackable = true
 MAX_STACK_SIZE = 5
+buy = 10
+sell = 2
 texture = SubResource("AtlasTexture_xr5rx")
 metadata/_custom_type_script = "uid://cqch4dx7c641w"

@@ -12,7 +12,7 @@ region_enabled = true
 region_rect = Rect2(48, 48, 48, 48)
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 0)
+position = Vector2(0, -8)
 
 [node name="Shadow" parent="." index="2"]
 visible = false

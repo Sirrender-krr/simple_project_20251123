@@ -14,5 +14,7 @@ description = "A stroge where you
 can hold items"
 stackable = false
 MAX_STACK_SIZE = 1
+buy = 200
+sell = 50
 texture = SubResource("AtlasTexture_85j5b")
 metadata/_custom_type_script = "uid://dwb1k0brvqhic"

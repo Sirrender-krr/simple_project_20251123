@@ -15,5 +15,7 @@ description = "A watering can that gives
 water to all plant."
 stackable = false
 MAX_STACK_SIZE = 1
+buy = 100
+sell = 20
 texture = SubResource("AtlasTexture_fe72s")
 metadata/_custom_type_script = "uid://w267yyilin7"

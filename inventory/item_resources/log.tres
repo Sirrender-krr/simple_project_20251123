@@ -14,5 +14,7 @@ name = "Log"
 description = "A crafting material"
 stackable = true
 MAX_STACK_SIZE = 50
+buy = 5
+sell = 1
 texture = SubResource("AtlasTexture_npvpr")
 metadata/_custom_type_script = "uid://c4nx5vfbpcwvp"

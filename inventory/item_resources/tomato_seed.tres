@@ -16,5 +16,7 @@ description = "A bag of tomato seed, plant it
 and grow a tomato."
 stackable = true
 MAX_STACK_SIZE = 20
+buy = 25
+sell = 5
 texture = SubResource("AtlasTexture_v7bwf")
 metadata/_custom_type_script = "uid://b4urbkidf83pt"

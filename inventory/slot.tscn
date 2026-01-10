@@ -7,8 +7,8 @@
 
 [node name="Slot" type="PanelContainer"]
 custom_minimum_size = Vector2(20, 20)
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 20.0
+offset_bottom = 20.0
 script = ExtResource("1_sthnt")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
