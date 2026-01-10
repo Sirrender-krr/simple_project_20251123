@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpblb44s3rnwq"]
+
+[ext_resource type="PackedScene" uid="uid://chv2adphvovra" path="res://inventory/Pickups/pickup.tscn" id="1_5ja21"]
+[ext_resource type="Texture2D" uid="uid://dhdp6ufo13fp5" path="res://assets/G_Idle.png" id="2_qrlja"]
+
+[node name="CoinPurse" instance=ExtResource("1_5ja21")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_qrlja")
+region_enabled = true
+region_rect = Rect2(48, 48, 48, 48)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)
+
+[node name="Shadow" parent="." index="2"]
+visible = false

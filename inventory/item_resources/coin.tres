@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDataCoin" load_steps=4 format=3 uid="uid://d0ldes55d6av7"]
+
+[ext_resource type="Script" uid="uid://dd8cg5dxhybyt" path="res://inventory/item_data_coin.gd" id="1_pmqaq"]
+[ext_resource type="Texture2D" uid="uid://cvn8uodhvfamx" path="res://assets/coin.png" id="2_jitfe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etoou"]
+atlas = ExtResource("2_jitfe")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_pmqaq")
+name = "Coin(s)"
+description = "A value hoding item."
+stackable = true
+MAX_STACK_SIZE = 999999999
+texture = SubResource("AtlasTexture_etoou")
+metadata/_custom_type_script = "uid://dd8cg5dxhybyt"

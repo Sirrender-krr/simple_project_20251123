@@ -2,6 +2,7 @@ extends Node2D
 
 var PickUp = preload("res://inventory/Pickups/pickup.tscn")
 var Chest = preload("res://scenes/chest.tscn")
+var CoinPurse = preload("res://inventory/Pickups/coin_purse.tscn")
 
 @export var ground_tilemap_layer: TileMapLayer
 
@@ -59,14 +60,21 @@ func _on_chest_broke(external_inventory_owner,pos) -> void:
 			continue
 		
 
+## item drop on ground
 func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
 	var pick_up = PickUp.instantiate() as Node2D
 	pick_up.slot_data = slot_data.duplicate()
+	
 	if pick_up.slot_data.item_data is ItemDataChest:
 		var chest = Chest.instantiate()
 		chest.global_position = chest_place_on_grid()
 		add_child(chest)
 		connect_external_inventory_signal()
+	elif pick_up.slot_data.item_data is ItemDataCoin:
+		var coin_purse = CoinPurse.instantiate() as Node2D
+		coin_purse.slot_data = slot_data.duplicate()
+		coin_purse.global_position = position_in_radius()
+		add_child(coin_purse)
 	else:
 		var rep = 0
 		var qty = slot_data.quantity

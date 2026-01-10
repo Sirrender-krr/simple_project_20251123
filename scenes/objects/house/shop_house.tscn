@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=4 uid="uid://defjgs3sms1lr"]
+[gd_scene load_steps=27 format=4 uid="uid://defjgs3sms1lr"]
 
 [ext_resource type="Texture2D" uid="uid://dtwtdqnpfv6jk" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Wooden_House_Walls_Tilset.png" id="1_vrvnv"]
 [ext_resource type="Script" uid="uid://bbrmjx435nvr" path="res://scenes/objects/house/house.gd" id="1_xwfed"]
 [ext_resource type="Texture2D" uid="uid://co2ehpl1nvf3f" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Tilesets/Wooden_House_Roof_Tilset.png" id="2_xwfed"]
 [ext_resource type="PackedScene" uid="uid://qke6n35mph8i" path="res://scenes/objects/door.tscn" id="3_dc2qb"]
+[ext_resource type="Shader" uid="uid://dahqxsnyxb5c7" path="res://scenes/objects/house/replace_color.gdshader" id="5_6jb3q"]
+[ext_resource type="Texture2D" uid="uid://d4npxjo7wgg1w" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Characters/Basic Charakter Spritesheet.png" id="5_u6xgn"]
+[ext_resource type="Texture2D" uid="uid://d2e8yjxl8lkdb" path="res://assets/Sprout Lands - Sprites - Basic pack (2)/Objects/Basic_Furniture.png" id="6_npulx"]
 
 [sub_resource type="Animation" id="Animation_xwfed"]
 length = 0.001
@@ -139,10 +142,113 @@ texture = ExtResource("2_xwfed")
 [sub_resource type="TileSet" id="TileSet_xu7sq"]
 sources/0 = SubResource("TileSetAtlasSource_4d2cx")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6jb3q"]
+texture = ExtResource("6_npulx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 4, 3, 4, 3, 6, -2, 6)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 2, 2, 2, 2, 4, -2, 4)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 2, 2, 2, 2, 4, -2, 4)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 0, 3, 0, 3, 2, -3, 2)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 0, 3, 0, 3, 2, -3, 2)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 0, 3, 0, 3, 2, -3, 2)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 4, 7, 4, 7, 8, -7, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 1, 5, 1, 5, 5, -5, 5)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 1, 5, 1, 5, 5, -5, 5)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 1, 5, 1, 5, 5, -5, 5)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 1, 5, 1, 5, 5, -5, 5)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 1, 7, 1, 7, 6, -7, 6)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -1, 5, -1, 5, 3, -5, 3)
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+0:1/size_in_atlas = Vector2i(1, 2)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, 7, 0, 7, 15, -7, 15)
+1:1/size_in_atlas = Vector2i(1, 2)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, 7, 0, 7, 15, -7, 15)
+2:1/size_in_atlas = Vector2i(1, 2)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, 7, 0, 7, 15, -7, 15)
+0:3/size_in_atlas = Vector2i(1, 2)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, 7, 0, 7, 15, -7, 15)
+1:3/size_in_atlas = Vector2i(1, 2)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, 7, 0, 7, 15, -7, 15)
+2:3/size_in_atlas = Vector2i(1, 2)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 0, 7, 0, 7, 15, -7, 15)
+3:5/size_in_atlas = Vector2i(2, 1)
+3:5/0 = 0
+5:5/size_in_atlas = Vector2i(2, 1)
+5:5/0 = 0
+7:5/size_in_atlas = Vector2i(2, 1)
+7:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jvbhs"]
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_6jb3q")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7sjuv"]
 size = Vector2(48, 48)
 
-[node name="House" type="Area2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvbhs"]
+shader = ExtResource("5_6jb3q")
+shader_parameter/original_0 = Color(0.360784, 0.305882, 0.572549, 1)
+shader_parameter/original_1 = Color(0.462745, 0.427451, 0.666667, 1)
+shader_parameter/replace_0 = Color(0.666519, 0.337306, 0.627371, 1)
+shader_parameter/replace_1 = Color(0.796221, 0.392914, 0.766157, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqq5w"]
+atlas = ExtResource("5_u6xgn")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwn47"]
+atlas = ExtResource("5_u6xgn")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d2cx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqq5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwn47")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkr1w"]
+radius = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jb3q"]
+radius = 2.0
+height = 8.0
+
+[node name="ShopHouse" type="Area2D"]
 y_sort_enabled = true
 collision_mask = 2
 script = ExtResource("1_xwfed")
@@ -168,6 +274,11 @@ z_index = 1
 tile_map_data = PackedByteArray("AAD+//v/AAAAAAAAAAD+//z/AAAAAAEAAAD+//3/AAAAAAIAAAD+//7/AAAAAAMAAAD+////AAAAAAQAAAACAPv/AAACAAAAAAACAPz/AAACAAEAAAACAP3/AAACAAIAAAACAP7/AAACAAMAAAACAP//AAACAAQAAAD///v/AAABAAAAAAD///z/AAABAAEAAAD///3/AAABAAIAAAD///7/AAABAAMAAAD/////AAABAAQAAAAAAPv/AAABAAAAAAAAAPz/AAABAAEAAAAAAP3/AAABAAIAAAAAAP7/AAABAAMAAAAAAP//AAABAAQAAAABAPv/AAABAAAAAAABAPz/AAABAAEAAAABAP3/AAABAAIAAAABAP7/AAABAAMAAAABAP//AAABAAQAAAA=")
 tile_set = SubResource("TileSet_xu7sq")
 
+[node name="Furnitures" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAABAP3/AAAGAAIAAAABAP7/AAADAAMAAAAAAPz/AAAHAAMAAAD///3/AAAAAAEAAAA=")
+tile_set = SubResource("TileSet_jvbhs")
+
 [node name="Door" parent="." instance=ExtResource("3_dc2qb")]
 y_sort_enabled = true
 position = Vector2(8, -8)
@@ -176,6 +287,28 @@ position = Vector2(8, -8)
 position = Vector2(8, -24)
 shape = SubResource("RectangleShape2D_7sjuv")
 debug_color = Color(0.206462, 0.628159, 0.364863, 0.42)
+
+[node name="Shopkeetper" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+
+[node name="AnimatedSpirte2D" type="AnimatedSprite2D" parent="Shopkeetper"]
+material = SubResource("ShaderMaterial_jvbhs")
+position = Vector2(8, -32)
+sprite_frames = SubResource("SpriteFrames_4d2cx")
+autoplay = "default"
+
+[node name="ShopkeeperArea2D" type="Area2D" parent="Shopkeetper/AnimatedSpirte2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shopkeetper/AnimatedSpirte2D/ShopkeeperArea2D"]
+shape = SubResource("CircleShape2D_fkr1w")
+debug_color = Color(0.702761, 0.33177, 0.905177, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shopkeetper"]
+position = Vector2(8, -25)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6jb3q")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
