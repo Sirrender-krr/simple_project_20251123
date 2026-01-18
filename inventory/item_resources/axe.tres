@@ -13,11 +13,11 @@ tools_catagory = 2
 name = "Axe"
 description = "A tool for chopping 
 a tree into log(s)
-buy: 100
-sell: 20"
+buy: 1
+sell: 1"
 stackable = false
 MAX_STACK_SIZE = 1
-buy = 0
-sell = 0
+buy = 1
+sell = 1
 texture = SubResource("AtlasTexture_3lc7o")
 metadata/_custom_type_script = "uid://w267yyilin7"

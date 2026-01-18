@@ -38,5 +38,6 @@ func _on_shopkeeper_area_2d_body_entered(body: Node2D) -> void:
 func _on_shopkeeper_area_2d_body_exited(body: Node2D) -> void:
 	var player = body
 	player.interacting = null
-	get_parent().toggle_inventory_interface()
+	if get_parent().inventory_interface.visible:
+		get_parent().toggle_inventory_interface()
 #endregion

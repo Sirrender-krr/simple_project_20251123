@@ -13,11 +13,11 @@ tools_catagory = 3
 name = "Watering Can"
 description = "A watering can that gives
 water to all plant.
-buy: 100
-sell: 20"
+buy: 1
+sell: 1"
 stackable = false
 MAX_STACK_SIZE = 1
-buy = 0
-sell = 0
+buy = 1
+sell = 1
 texture = SubResource("AtlasTexture_fe72s")
 metadata/_custom_type_script = "uid://w267yyilin7"

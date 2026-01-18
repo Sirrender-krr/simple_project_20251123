@@ -13,13 +13,12 @@ signal inv_show(inv_visible: bool)
 @onready var hot_bar_inventory: PanelContainer = $CanvasLayer/HotBarInventory
 
 func _ready() -> void:
+	PlacingManager.ground_tile = ground_tilemap_layer
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
 	inventory_interface.drop_slot_data.connect(_on_inventory_interface_drop_slot_data)
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	connect_external_inventory_signal()
-	
-	PlacingManager.ground_tile = ground_tilemap_layer
 
 
 func connect_external_inventory_signal() -> void:

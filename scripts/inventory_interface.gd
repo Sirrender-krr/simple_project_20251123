@@ -110,6 +110,7 @@ func _on_visibility_changed() -> void:
 		grabbed_slot_data = null
 		update_grabbed_slot()
 
+#region shop
 ##a function to do inside Shop Inventory Tab
 func on_inventory_interact_shop(inventory_data: InventoryData, index: int, button: int) -> void:
 	match [grabbed_slot_data, button]:
@@ -175,6 +176,11 @@ func can_loss_money(slot_data:SlotData):
 			if i.item_data is ItemDataCoin and i.quantity < sum:
 				return false
 			if i.item_data is ItemDataCoin and i.quantity >= sum:
+				if grabbed_slot_data:
+					if grabbed_slot_data.item_data.MAX_STACK_SIZE > item_qty:
+						return true
+					else:
+						return false
 				return true
 			#else:
 				#print("don't have money")
@@ -206,3 +212,4 @@ func loss_money(slot_data:SlotData,qty:int) -> void:
 			#for index in range(slots.size()):
 				#if !slots[index]:
 					#return
+#endregion

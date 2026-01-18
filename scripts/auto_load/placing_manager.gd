@@ -1,7 +1,5 @@
 extends Node
 
-
-
 var ground_tile: TileMapLayer
 
 var occupied_tiles: Dictionary = {}

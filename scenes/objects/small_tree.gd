@@ -14,6 +14,7 @@ var PickUp = preload("res://inventory/Pickups/pickup.tscn")
 
 func _ready() -> void:
 	hurt_component.hurt.connect(on_hurt)
+	collision_shape_2d.disabled = false
 	damage_component.max_damaged_reached.connect(on_max_damage_reached)
 	var tree_coord = global_position
 	PlacingManager.attemp_placement(tree_coord) #register on map grid to prevent overlap placement
@@ -29,6 +30,7 @@ func enable_particle() -> void:
 	drop_particle_component.emitting = true
 
 func on_max_damage_reached() -> void:
+	
 	call_deferred("add_log_scene")
 	texture = null
 	collision_shape_2d.queue_free()
