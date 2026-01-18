@@ -10,7 +10,9 @@ region = Rect2(80, 16, 16, 16)
 [resource]
 script = ExtResource("1_p0lfc")
 name = "Tomato"
-description = "A sweet mixed with sour fruit."
+description = "A sweet mixed with sour fruit.
+buy: 80
+sell: 40"
 stackable = true
 MAX_STACK_SIZE = 20
 buy = 80

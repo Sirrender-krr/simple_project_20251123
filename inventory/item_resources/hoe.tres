@@ -12,10 +12,12 @@ script = ExtResource("1_pyjgn")
 tools_catagory = 1
 name = "Hoe"
 description = "A tool for digging plain
-into tilled dirt"
+into tilled dirt.
+buy: 100
+sell: 20"
 stackable = false
 MAX_STACK_SIZE = 1
-buy = 100
-sell = 20
+buy = 0
+sell = 0
 texture = SubResource("AtlasTexture_xsbhl")
 metadata/_custom_type_script = "uid://du4i2aawy5pmh"

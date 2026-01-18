@@ -13,7 +13,9 @@ script = ExtResource("2_eeliy")
 scene = ExtResource("1_b507t")
 name = "Tomato Seed"
 description = "A bag of tomato seed, plant it
-and grow a tomato."
+and grow a tomato.
+buy: 25
+sell: 5"
 stackable = true
 MAX_STACK_SIZE = 20
 buy = 25

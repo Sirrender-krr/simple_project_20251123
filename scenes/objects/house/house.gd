@@ -1,11 +1,24 @@
 extends Area2D
+class_name ShopInventory
+
+signal toggle_inventory(external_inventory_owner)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var roof: TileMapLayer = $Roof
+@onready var shopkeeper_area_2d: Area2D = $Shopkeetper/AnimatedSpirte2D/ShopkeeperArea2D
+
+@export var inv_data:InventoryData
+
+var inventory_data
 
 func _ready() -> void:
 	roof.show()
+	inventory_data = inv_data.duplicate()
 
+func player_interact() -> void:
+	toggle_inventory.emit(self)
+
+#region roof fading
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		animation_player.play("player_in")
@@ -14,3 +27,16 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		animation_player.play("player_out")
+#endregion
+
+#region shopkeeper interact
+func _on_shopkeeper_area_2d_body_entered(body: Node2D) -> void:
+	var player = body
+	player.interacting = self
+
+
+func _on_shopkeeper_area_2d_body_exited(body: Node2D) -> void:
+	var player = body
+	player.interacting = null
+	get_parent().toggle_inventory_interface()
+#endregion

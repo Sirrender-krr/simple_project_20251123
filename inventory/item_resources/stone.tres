@@ -11,7 +11,9 @@ region = Rect2(111, 13, 16, 16)
 script = ExtResource("1_jxfsm")
 material_catagory = 0
 name = "Stone"
-description = "A little hard stone."
+description = "A little hard stone.
+buy: 5
+sell: 1"
 stackable = true
 MAX_STACK_SIZE = 50
 buy = 5

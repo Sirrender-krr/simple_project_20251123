@@ -11,8 +11,9 @@ var coins:
 
 var inventory: InventoryData
 
-func _ready() -> void:
-	find_money()
+##can not run if player has nothing in inventory
+#func _ready() -> void:
+	#find_money()
 
 func gain_money() -> void:
 	inventory = player.inventory_data as InventoryData
@@ -29,6 +30,7 @@ func gain_money() -> void:
 			for index in range(slots.size()):
 				if !slots[index]:
 					slots[index] = coin
+					return
 
 func loss_money() -> void:
 	inventory = player.inventory_data as InventoryData

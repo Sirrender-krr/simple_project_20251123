@@ -28,3 +28,7 @@ func create_single_slot_data() -> SlotData:
 	new_slot_data.quantity = 1
 	quantity -= 1
 	return new_slot_data
+
+func create_single_slot_data_shop() -> SlotData:
+	quantity -= 1
+	return null

@@ -42,6 +42,7 @@ folder_colors={
 
 external_inventory=""
 player=""
+shop_house=""
 
 [gui]
 

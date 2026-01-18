@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bpkeje8gydf2e"]
+[gd_scene load_steps=35 format=4 uid="uid://bpkeje8gydf2e"]
 
 [ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_kekg5"]
 [ext_resource type="TileSet" uid="uid://cs5m2c6u266ps" path="res://scenes/objects/tile_map_layer_resources/water.tres" id="2_fsgrc"]
@@ -21,11 +21,13 @@
 [ext_resource type="PackedScene" uid="uid://cpolyfl1al6pr" path="res://scenes/player.tscn" id="19_m0b2k"]
 [ext_resource type="Script" uid="uid://cvcrfk3tq2216" path="res://scripts/inventory_interface.gd" id="20_6dnb3"]
 [ext_resource type="PackedScene" uid="uid://d4d7f4fooftrl" path="res://inventory/inventory.tscn" id="21_olv6u"]
+[ext_resource type="Resource" uid="uid://d0ldes55d6av7" path="res://inventory/item_resources/coin.tres" id="21_wvx1i"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="22_kh4m8"]
 [ext_resource type="PackedScene" uid="uid://dqi6l3jbvv3hh" path="res://inventory/slot.tscn" id="22_lmvj7"]
 [ext_resource type="PackedScene" uid="uid://c6bd7fk4k8c88" path="res://inventory/hot_bar_inventory.tscn" id="23_ioro6"]
 [ext_resource type="Script" uid="uid://dm0nk42ftko1k" path="res://scripts/components/tilling_dirt_component.gd" id="24_6yw11"]
 [ext_resource type="Script" uid="uid://3xcu0t0j8vt2" path="res://scripts/components/planting_component.gd" id="25_cflcv"]
-[ext_resource type="PackedScene" uid="uid://d2l6nkghpcvnv" path="res://scenes/Test/gain_money_button.tscn" id="26_kekg5"]
+[ext_resource type="PackedScene" uid="uid://defjgs3sms1lr" path="res://scenes/objects/house/shop_house.tscn" id="27_fsgrc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_758ji"]
 texture = ExtResource("6_8wkyi")
@@ -65,6 +67,12 @@ scenes/4/scene = ExtResource("18_g87gf")
 
 [sub_resource type="TileSet" id="TileSet_igtxv"]
 sources/0 = SubResource("TileSetScenesCollectionSource_qd560")
+
+[sub_resource type="Resource" id="Resource_8wkyi"]
+script = ExtResource("22_kh4m8")
+item_data = ExtResource("21_wvx1i")
+quantity = 1
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("ground_tilemap_layer")]
 y_sort_enabled = true
@@ -108,7 +116,7 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_igtxv")
 
 [node name="Player" parent="." instance=ExtResource("19_m0b2k")]
-position = Vector2(159, 152)
+position = Vector2(272, 192)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_right = 808
@@ -125,15 +133,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("20_6dnb3")
+COIN = SubResource("Resource_8wkyi")
 
 [node name="PlayerInventory" parent="CanvasLayer/InventoryInterface" instance=ExtResource("21_olv6u")]
 layout_mode = 0
 
 [node name="ExternalInventory" parent="CanvasLayer/InventoryInterface" instance=ExtResource("21_olv6u")]
 visible = false
-layout_mode = 0
-offset_left = 224.0
-offset_right = 314.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_right = 45.0
+grow_horizontal = 2
 
 [node name="GrabSlot" parent="CanvasLayer/InventoryInterface" instance=ExtResource("22_lmvj7")]
 visible = false
@@ -153,9 +166,8 @@ script = ExtResource("25_cflcv")
 ground_tilemap_layer = NodePath("../tile_map/ground")
 tilled_dirt_tilemap_layer = NodePath("../tile_map/tilled_dirt")
 
-[node name="CanvasLayer2" parent="." instance=ExtResource("26_kekg5")]
+[node name="ShopHouse" parent="." instance=ExtResource("27_fsgrc")]
+position = Vector2(256, 168)
 
-[connection signal="area_entered" from="tile_map/UnderGrowth/TinyGrass" to="tile_map/UnderGrowth/TinyGrass" method="_on_area_entered"]
-[connection signal="body_entered" from="tile_map/UnderGrowth/TinyGrass" to="tile_map/UnderGrowth/TinyGrass" method="_on_body_entered"]
 [connection signal="gui_input" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_gui_input"]
 [connection signal="visibility_changed" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_visibility_changed"]

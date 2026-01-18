@@ -13,7 +13,9 @@ heal_value = 30
 name = "Milk"
 description = "Full of calcium, some might 
 say it is good for your bones. 
-Gain stamina 50 points."
+Gain stamina 50 points.
+buy: 10
+sell: 2"
 stackable = true
 MAX_STACK_SIZE = 5
 buy = 10

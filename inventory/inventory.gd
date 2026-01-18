@@ -17,6 +17,15 @@ func populate_item_grid(inventory_data:InventoryData) -> void:
 	for child in item_grid.get_children():
 		child.queue_free()
 	
+	var slots = inventory_data.slot_datas
+	##When coin reach 0 it will disappear
+	for i in range(slots.size()):
+		if slots[i]:
+			if slots[i].item_data is ItemDataCoin:
+				if slots[i].quantity < 1:
+					slots[i] = null
+					continue
+	
 	for slot_data in inventory_data.slot_datas:
 		var slot = Slot.instantiate()
 		item_grid.add_child(slot)

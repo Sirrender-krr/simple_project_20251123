@@ -27,14 +27,11 @@ var state = State.idle#:
 		#state = x
 		#print(State.find_key(state))
 #endregion
-#region inventory var
-#region
+
 var seed_in_hand: PackedScene
-#endregion
 @export var inventory_data: InventoryData
 var interacting
 
-#endregion
 
 func _ready() -> void:
 	PlayerManager.player = self

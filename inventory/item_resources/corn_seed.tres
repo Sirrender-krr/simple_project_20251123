@@ -13,7 +13,9 @@ script = ExtResource("2_ou2no")
 scene = ExtResource("1_vtg2u")
 name = "Corn Seed"
 description = "A bag of corn seed, plant it
-and grow corns"
+and grow corns
+buy: 20
+sell: 5"
 stackable = true
 MAX_STACK_SIZE = 20
 buy = 20

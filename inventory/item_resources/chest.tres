@@ -11,7 +11,9 @@ region = Rect2(16, 16, 16, 16)
 script = ExtResource("1_dxmxt")
 name = "Chest"
 description = "A stroge where you
-can hold items"
+can hold items
+buy: 200
+sell: 50"
 stackable = false
 MAX_STACK_SIZE = 1
 buy = 200

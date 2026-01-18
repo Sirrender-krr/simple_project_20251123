@@ -11,7 +11,9 @@ region = Rect2(80, 0, 16, 16)
 script = ExtResource("1_8ukm4")
 name = "Corn"
 description = "A yellow Vegetable with 
-sweet in taste and aroma."
+sweet in taste and aroma.
+buy: 10
+sell: 5"
 stackable = true
 MAX_STACK_SIZE = 20
 buy = 10

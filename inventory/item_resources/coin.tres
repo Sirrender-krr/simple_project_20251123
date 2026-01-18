@@ -10,7 +10,9 @@ region = Rect2(0, 0, 16, 16)
 [resource]
 script = ExtResource("1_pmqaq")
 name = "Coin(s)"
-description = "A value hoding item."
+description = "A value hoding item.
+buy: 1
+sell: 1"
 stackable = true
 MAX_STACK_SIZE = 9999
 buy = 1
