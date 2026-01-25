@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://c8eng23gafov2"]
+[gd_scene load_steps=36 format=4 uid="uid://c8eng23gafov2"]
 
 [ext_resource type="Script" uid="uid://csg4u5aj45p4g" path="res://test_scenes/main.gd" id="1_n4bbh"]
 [ext_resource type="TileSet" uid="uid://cs5m2c6u266ps" path="res://scenes/objects/tile_map_layer_resources/water.tres" id="2_5rnam"]
@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://c6bd7fk4k8c88" path="res://inventory/hot_bar_inventory.tscn" id="23_6bcly"]
 [ext_resource type="Script" uid="uid://dm0nk42ftko1k" path="res://scripts/components/tilling_dirt_component.gd" id="24_f4d4p"]
 [ext_resource type="Script" uid="uid://3xcu0t0j8vt2" path="res://scripts/components/planting_component.gd" id="25_xixai"]
+[ext_resource type="PackedScene" uid="uid://chv2adphvovra" path="res://inventory/Pickups/pickup.tscn" id="26_xy5mt"]
+[ext_resource type="Resource" uid="uid://crvjaqgjpmjm6" path="res://inventory/item_resources/corn.tres" id="27_xy5mt"]
+[ext_resource type="Script" uid="uid://c5cprt1l0e75w" path="res://inventory/slot_data.gd" id="28_ssmve"]
+[ext_resource type="Script" uid="uid://i70n3f7rc1bu" path="res://scripts/save_&_load/save_load.gd" id="29_ro6w8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_758ji"]
 texture = ExtResource("6_ssmve")
@@ -65,6 +69,12 @@ scenes/4/scene = ExtResource("18_o0ofj")
 [sub_resource type="TileSet" id="TileSet_igtxv"]
 sources/0 = SubResource("TileSetScenesCollectionSource_qd560")
 
+[sub_resource type="Resource" id="Resource_y6ku3"]
+script = ExtResource("28_ssmve")
+item_data = ExtResource("27_xy5mt")
+quantity = 100
+metadata/_custom_type_script = "uid://c5cprt1l0e75w"
+
 [node name="Main" type="Node2D" node_paths=PackedStringArray("ground_tilemap_layer")]
 y_sort_enabled = true
 script = ExtResource("1_n4bbh")
@@ -98,7 +108,7 @@ tile_set = ExtResource("2_5rnam")
 collision_enabled = false
 
 [node name="UnderGrowth" type="TileMapLayer" parent="tile_map"]
-tile_map_data = PackedByteArray("AADs/xAAAQAHAAQAAADs/xUAAQAHAAQAAADt////AQAHAAQAAADu/wEAAQAIAAQAAADu/w8AAQAIAAQAAADv/wUAAQAIAAQAAADv/wwAAQAIAAQAAADw/wUAAQAHAAQAAADw/wYAAQAHAAQAAADw/woAAQAHAAQAAADx/wYAAQAHAAQAAADx/xAAAQAIAAQAAADy/woAAQAIAAQAAADy/wwAAQAHAAQAAADy/xAAAQAHAAQAAADy/xMAAQAHAAQAAADy/xkAAQAIAAQAAADy/xoAAQAIAAQAAAD2//z/AQAIAAQAAAD2//3/AQAHAAQAAAD3//7/AQAIAAQAAAD4//7/AQAHAAQAAAD4////AQAIAAQAAAD8//z/AQAHAAQAAAD+//z/AQAHAAQAAAD///z/AQAHAAQAAAD/////AQAIAAQAAAACAAAAAQAIAAQAAAAFAPz/AQAHAAQAAAAIAPz/AQAHAAQAAAAJAPv/AQAIAAQAAAAOAP3/AQAHAAQAAAAQAP7/AQAHAAQAAAARAPz/AQAIAAQAAAARAP7/AQAIAAQAAAAUAPz/AQAIAAQAAAAcAP3/AQAIAAQAAAAeAP3/AQAHAAQAAAAeAP//AQAIAAQAAAAgAP7/AQAIAAQAAAAhAP3/AQAHAAQAAAAiAP7/AQAHAAQAAAAUAAAAAQAIAAQAAAAWAAAAAQAIAAQAAADz/wgAAQAHAAQAAAD0/xUAAQAHAAQAAAD0/xwAAQAIAAQAAAD1/wYAAQAHAAQAAAD1/xoAAQAHAAQAAAD2/wYAAQAIAAQAAAD2/x0AAQAIAAQAAAD3/x8AAQAHAAQAAAD4/x8AAQAIAAQAAAD5/xYAAQAIAAQAAAD5/xwAAQAHAAQAAAD6/yAAAQAHAAQAAAD7/wIAAQAHAAQAAAD9/wIAAQAHAAQAAAD+/x4AAQAHAAQAAAD+/yAAAQAHAAQAAAAAAB4AAQAIAAQAAAACAAEAAQAIAAQAAAADAB0AAQAIAAQAAAAGACAAAQAIAAQAAAAHAAEAAQAHAAQAAAAHACAAAQAHAAQAAAAQAB0AAQAIAAQAAAATAB8AAQAIAAQAAAAUAAIAAQAHAAQAAAAUABsAAQAHAAQAAAAUAB0AAQAHAAQAAAAVAB0AAQAHAAQAAAAXABwAAQAHAAQAAAAaAB4AAQAIAAQAAAAbACAAAQAHAAQAAAAcAB4AAQAHAAQAAAAdAB8AAQAHAAQAAAAeAB8AAQAHAAQAAAAgAB4AAQAHAAQAAAAhACAAAQAIAAQAAAAkABwAAQAIAAQAAAAlAAEAAQAHAAQAAAAlAAgAAQAIAAQAAAAlAA8AAQAHAAQAAAAlAB8AAQAHAAQAAAAmAAUAAQAIAAQAAAAmABMAAQAIAAQAAAAnAAUAAQAIAAQAAAAnAAoAAQAIAAQAAAAnAAwAAQAHAAQAAAAnACAAAQAIAAQAAAAoAAUAAQAHAAQAAAAoAAYAAQAHAAQAAAAoABUAAQAIAAQAAAApABEAAQAIAAQAAAApABQAAQAIAAQAAAApABYAAQAIAAQAAAAqABIAAQAIAAQAAAAqABQAAQAHAAQAAAArABMAAQAIAAQAAAAsABwAAQAHAAQAAAAsAB4AAQAHAAQAAAAsACAAAQAIAAQAAAAuAB4AAQAHAAQAAAAvABUAAQAHAAQAAAAwABQAAQAIAAQAAAAxABQAAQAIAAQAAAAxAB4AAQAIAAQAAAANAAMAAwAAAAAABAA=")
+tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_61ae3")
 
 [node name="OverGrowth" type="TileMapLayer" parent="tile_map"]
@@ -107,6 +117,7 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_igtxv")
 
 [node name="Player" parent="." instance=ExtResource("19_f77t3")]
+unique_name_in_owner = true
 position = Vector2(159, 152)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -142,6 +153,20 @@ layout_mode = 0
 
 [node name="HotBarInventory" parent="CanvasLayer" instance=ExtResource("23_6bcly")]
 
+[node name="SaveButton" type="Button" parent="CanvasLayer"]
+offset_left = 120.0
+offset_top = 160.0
+offset_right = 152.0
+offset_bottom = 176.0
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="CanvasLayer"]
+offset_left = 168.0
+offset_top = 160.0
+offset_right = 200.0
+offset_bottom = 176.0
+text = "Load"
+
 [node name="TillingDirtComponent" type="Node" parent="." node_paths=PackedStringArray("ground_tilemap_layer", "tilled_dirt_tilemap_layer")]
 script = ExtResource("24_f4d4p")
 ground_tilemap_layer = NodePath("../tile_map/ground")
@@ -152,7 +177,94 @@ script = ExtResource("25_xixai")
 ground_tilemap_layer = NodePath("../tile_map/ground")
 tilled_dirt_tilemap_layer = NodePath("../tile_map/tilled_dirt")
 
-[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@25467" to="tile_map/UnderGrowth/@Area2D@25467" method="_on_area_entered"]
-[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@25467" to="tile_map/UnderGrowth/@Area2D@25467" method="_on_body_entered"]
+[node name="Pickup" parent="." instance=ExtResource("26_xy5mt")]
+position = Vector2(216, 152)
+slot_data = SubResource("Resource_y6ku3")
+
+[node name="SaveLoad" type="Node" parent="."]
+script = ExtResource("29_ro6w8")
+
+[connection signal="area_entered" from="tile_map/UnderGrowth/TwoTinyGrass" to="tile_map/UnderGrowth/TwoTinyGrass" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/TwoTinyGrass" to="tile_map/UnderGrowth/TwoTinyGrass" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/YellowTinyFlower" to="tile_map/UnderGrowth/YellowTinyFlower" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/YellowTinyFlower" to="tile_map/UnderGrowth/YellowTinyFlower" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33513" to="tile_map/UnderGrowth/@Area2D@33513" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33513" to="tile_map/UnderGrowth/@Area2D@33513" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/PurpleMushroom" to="tile_map/UnderGrowth/PurpleMushroom" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/PurpleMushroom" to="tile_map/UnderGrowth/PurpleMushroom" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/PinkFlower" to="tile_map/UnderGrowth/PinkFlower" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/PinkFlower" to="tile_map/UnderGrowth/PinkFlower" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/YellowFlower" to="tile_map/UnderGrowth/YellowFlower" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/YellowFlower" to="tile_map/UnderGrowth/YellowFlower" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33514" to="tile_map/UnderGrowth/@Area2D@33514" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33514" to="tile_map/UnderGrowth/@Area2D@33514" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33515" to="tile_map/UnderGrowth/@Area2D@33515" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33515" to="tile_map/UnderGrowth/@Area2D@33515" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33516" to="tile_map/UnderGrowth/@Area2D@33516" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33516" to="tile_map/UnderGrowth/@Area2D@33516" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33517" to="tile_map/UnderGrowth/@Area2D@33517" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33517" to="tile_map/UnderGrowth/@Area2D@33517" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33518" to="tile_map/UnderGrowth/@Area2D@33518" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33518" to="tile_map/UnderGrowth/@Area2D@33518" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33519" to="tile_map/UnderGrowth/@Area2D@33519" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33519" to="tile_map/UnderGrowth/@Area2D@33519" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/TinyGrass" to="tile_map/UnderGrowth/TinyGrass" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/TinyGrass" to="tile_map/UnderGrowth/TinyGrass" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33520" to="tile_map/UnderGrowth/@Area2D@33520" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33520" to="tile_map/UnderGrowth/@Area2D@33520" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33521" to="tile_map/UnderGrowth/@Area2D@33521" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33521" to="tile_map/UnderGrowth/@Area2D@33521" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/TwoPurpleMushrooms" to="tile_map/UnderGrowth/TwoPurpleMushrooms" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/TwoPurpleMushrooms" to="tile_map/UnderGrowth/TwoPurpleMushrooms" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33522" to="tile_map/UnderGrowth/@Area2D@33522" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33522" to="tile_map/UnderGrowth/@Area2D@33522" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33523" to="tile_map/UnderGrowth/@Area2D@33523" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33523" to="tile_map/UnderGrowth/@Area2D@33523" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/PinkTinyFlower" to="tile_map/UnderGrowth/PinkTinyFlower" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/PinkTinyFlower" to="tile_map/UnderGrowth/PinkTinyFlower" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33524" to="tile_map/UnderGrowth/@Area2D@33524" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33524" to="tile_map/UnderGrowth/@Area2D@33524" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33525" to="tile_map/UnderGrowth/@Area2D@33525" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33525" to="tile_map/UnderGrowth/@Area2D@33525" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33526" to="tile_map/UnderGrowth/@Area2D@33526" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33526" to="tile_map/UnderGrowth/@Area2D@33526" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33527" to="tile_map/UnderGrowth/@Area2D@33527" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33527" to="tile_map/UnderGrowth/@Area2D@33527" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33528" to="tile_map/UnderGrowth/@Area2D@33528" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33528" to="tile_map/UnderGrowth/@Area2D@33528" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33529" to="tile_map/UnderGrowth/@Area2D@33529" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33529" to="tile_map/UnderGrowth/@Area2D@33529" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33530" to="tile_map/UnderGrowth/@Area2D@33530" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33530" to="tile_map/UnderGrowth/@Area2D@33530" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33531" to="tile_map/UnderGrowth/@Area2D@33531" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33531" to="tile_map/UnderGrowth/@Area2D@33531" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33532" to="tile_map/UnderGrowth/@Area2D@33532" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33532" to="tile_map/UnderGrowth/@Area2D@33532" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33533" to="tile_map/UnderGrowth/@Area2D@33533" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33533" to="tile_map/UnderGrowth/@Area2D@33533" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33534" to="tile_map/UnderGrowth/@Area2D@33534" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33534" to="tile_map/UnderGrowth/@Area2D@33534" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33535" to="tile_map/UnderGrowth/@Area2D@33535" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33535" to="tile_map/UnderGrowth/@Area2D@33535" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33536" to="tile_map/UnderGrowth/@Area2D@33536" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33536" to="tile_map/UnderGrowth/@Area2D@33536" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33537" to="tile_map/UnderGrowth/@Area2D@33537" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33537" to="tile_map/UnderGrowth/@Area2D@33537" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33538" to="tile_map/UnderGrowth/@Area2D@33538" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33538" to="tile_map/UnderGrowth/@Area2D@33538" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33539" to="tile_map/UnderGrowth/@Area2D@33539" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33539" to="tile_map/UnderGrowth/@Area2D@33539" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33540" to="tile_map/UnderGrowth/@Area2D@33540" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33540" to="tile_map/UnderGrowth/@Area2D@33540" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33541" to="tile_map/UnderGrowth/@Area2D@33541" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33541" to="tile_map/UnderGrowth/@Area2D@33541" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33542" to="tile_map/UnderGrowth/@Area2D@33542" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33542" to="tile_map/UnderGrowth/@Area2D@33542" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33543" to="tile_map/UnderGrowth/@Area2D@33543" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33543" to="tile_map/UnderGrowth/@Area2D@33543" method="_on_body_entered"]
+[connection signal="area_entered" from="tile_map/UnderGrowth/@Area2D@33544" to="tile_map/UnderGrowth/@Area2D@33544" method="_on_area_entered"]
+[connection signal="body_entered" from="tile_map/UnderGrowth/@Area2D@33544" to="tile_map/UnderGrowth/@Area2D@33544" method="_on_body_entered"]
 [connection signal="gui_input" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_gui_input"]
 [connection signal="visibility_changed" from="CanvasLayer/InventoryInterface" to="CanvasLayer/InventoryInterface" method="_on_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/SaveButton" to="SaveLoad" method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LoadButton" to="SaveLoad" method="_on_load_button_pressed"]
