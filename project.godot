@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 
 PlayerManager="*res://scripts/auto_load/player_manager.gd"
 PlacingManager="*res://scripts/auto_load/placing_manager.gd"
+GameManager="*res://scripts/save_&_load_2/game_manager.gd"
 
 [display]
 

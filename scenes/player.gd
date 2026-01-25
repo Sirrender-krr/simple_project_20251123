@@ -35,6 +35,9 @@ var interacting
 
 func _ready() -> void:
 	PlayerManager.player = self
+	GameManager.player = self
+	global_position = GameManager.player_spawn_position
+	inventory_data = GameManager.player_inventory
 	hit_spot_collision_shape.disabled = true
 	hit_spot_collision_shape.position = Vector2(0,0)
 
