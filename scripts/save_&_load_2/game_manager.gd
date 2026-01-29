@@ -5,13 +5,25 @@ var player: Player = null
 var player_spawn_position = Vector2(159.0,152.0)
 var player_inventory: InventoryData = preload("res://inventory/player_inventory.tres")
 
+## an emty inventory of 8 slots
+var default_inventory: InventoryData = preload("res://inventory/default_inventory.tres")
+
 var target_scene: String = ""
 
 func save_game(data = null) -> void:
 	var save = ConfigFile.new()
+	var slot = data.inventory_data.slot_datas
+	var save_slot = {}
 	if data is Player:
 		save.set_value("player","position",data.global_position)
-		save.set_value("player","inventory",data.inventory_data)
+
+		
+		for item in range(slot.size()):
+			if slot[item]:
+				save_slot[item] = slot[item].resource_path
+				
+		save.set_value("inventory","item",save_slot)
+
 	else:
 		pass
 	var save_path: String = "user://save.cfg"
@@ -27,4 +39,11 @@ func load_game() -> void:
 		return
 	
 	player_spawn_position = save.get_value('player','position')
-	player_inventory = save.get_value('player','inventory')
+	#player_inventory = save.get_value('player','inventory')
+	var slot= player.inventory_data
+	var inv_paths = save.get_value("inventory","item")
+	print(inv_paths)
+	player_inventory = default_inventory
+	
+	for path in inv_paths:
+		player_inventory.slot_datas[path] = load(inv_paths[path])
