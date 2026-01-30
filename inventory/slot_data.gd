@@ -20,11 +20,13 @@ func can_fully_merge_with(other_slot_data: SlotData) -> bool:
 	and item_data.stackable\
 	and quantity + other_slot_data.quantity <= item_data.MAX_STACK_SIZE
 
-func fully_merge_with(other_slot_data: SlotData) -> void:
+func fully_merge_with(slot_data: SlotData) -> void:
+	var other_slot_data = slot_data.duplicate()
 	quantity += other_slot_data.quantity
 
 func create_single_slot_data() -> SlotData:
-	var new_slot_data = duplicate()
+	#var new_slot_data = duplicate()
+	var new_slot_data = GameManager.save_duplicate(self)
 	new_slot_data.quantity = 1
 	quantity -= 1
 	return new_slot_data

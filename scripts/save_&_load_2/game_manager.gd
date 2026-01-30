@@ -10,6 +10,19 @@ var default_inventory: InventoryData = preload("res://inventory/default_inventor
 
 var target_scene: String = ""
 
+func get_random_path() -> String:
+	var random_id = randi_range(0,99999999)
+	return "user://item_" + str(random_id) +".tres"
+
+func save_duplicate(original:Resource):
+	var copy = original.duplicate()
+	var path = get_random_path()
+	var error = ResourceSaver.save(copy,path)
+	
+	if error == OK:
+		copy.resource_path = path
+		return copy
+
 func save_game(data = null) -> void:
 	var save = ConfigFile.new()
 	var slot = data.inventory_data.slot_datas
@@ -40,10 +53,9 @@ func load_game() -> void:
 	
 	player_spawn_position = save.get_value('player','position')
 	#player_inventory = save.get_value('player','inventory')
-	var slot= player.inventory_data
 	var inv_paths = save.get_value("inventory","item")
 	print(inv_paths)
 	player_inventory = default_inventory
-	
+	player_inventory.inventory_updated.emit(player_inventory)
 	for path in inv_paths:
 		player_inventory.slot_datas[path] = load(inv_paths[path])
