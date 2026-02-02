@@ -123,10 +123,12 @@ func on_inventory_interact_shop(inventory_data: InventoryData, index: int, butto
 		[_,MOUSE_BUTTON_LEFT]:
 			##continue buying
 			if inventory_data.slot_datas[index]:
-				if grabbed_slot_data.item_data == inventory_data.slot_datas[index].item_data:
+				if grabbed_slot_data.item_data == inventory_data.slot_datas[index].item_data and grabbed_slot_data.quantity != grabbed_slot_data.item_data.MAX_STACK_SIZE:
 					if can_loss_money(inventory_data.slot_datas[index]):
 						grabbed_slot_data.quantity += inventory_data.slot_datas[index].quantity
 						loss_money(inventory_data.slot_datas[index],inventory_data.slot_datas[index].quantity)
+				elif grabbed_slot_data.item_data == inventory_data.slot_datas[index].item_data and grabbed_slot_data.quantity == grabbed_slot_data.item_data.MAX_STACK_SIZE:
+					pass
 				##sell
 				else:
 					gain_money(grabbed_slot_data,grabbed_slot_data.quantity)

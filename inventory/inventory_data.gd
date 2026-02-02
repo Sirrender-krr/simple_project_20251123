@@ -56,6 +56,10 @@ func drop_single_slot_data(_grabbed_slot_data: SlotData, index: int) -> SlotData
 		slot_datas[index] = grabbed_slot_data.create_single_slot_data()
 	elif slot_data.can_merge_with(grabbed_slot_data):
 		slot_data.fully_merge_with(grabbed_slot_data.create_single_slot_data())
+	else:
+		var middle_hand = slot_datas[index]
+		slot_datas[index] = grabbed_slot_data
+		grabbed_slot_data = middle_hand
 	
 	inventory_updated.emit(self)
 	

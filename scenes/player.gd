@@ -220,6 +220,7 @@ func interact() -> void:
 	 and interacting:
 		interacting.player_interact()
 	else:
+		
 		pass
 
 func heal(heal_value:int) -> void:
